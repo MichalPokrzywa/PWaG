@@ -1,0 +1,284 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt"
+    message: |
+      The system is: Windows - 10.0.19045 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Wersja programu MSBuild 17.11.2+c078802d4 dla .NET Framework
+      Kompilacja rozpoczÄ™Ĺ‚a siÄ™ 12.01.2025 17:48:30.
+      
+      Projekt â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\3.31.0-rc1\\CompilerIdC\\CompilerIdC.vcxprojâ€ť w wÄ™Ĺşle 1 (domyĹ›lne elementy docelowe).
+      PrepareForBuild:
+        Tworzenie katalogu â€žDebug\\â€ť.
+        Dane wyjĹ›ciowe ze strukturÄ… sÄ… wĹ‚Ä…czone. Formatowanie diagnostyki kompilatora bÄ™dzie odzwierciedlaÄ‡ hierarchiÄ™ bĹ‚Ä™dĂłw. Aby uzyskaÄ‡ wiÄ™cej informacji, zobacz https://aka.ms/cpp/structured-output.
+        Tworzenie katalogu â€žDebug\\CompilerIdC.tlog\\â€ť.
+      InitializeBuildStatus:
+        Trwa tworzenie â€žDebug\\CompilerIdC.tlog\\unsuccessfulbuildâ€ť, poniewaĹĽ okreĹ›lono "AlwaysCreate".
+        Modyfikowanie â€žDebug\\CompilerIdC.tlog\\unsuccessfulbuildâ€ť.
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> E:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\3.31.0-rc1\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Usuwanie pliku â€žDebug\\CompilerIdC.tlog\\unsuccessfulbuildâ€ť.
+        Modyfikowanie â€žDebug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstateâ€ť.
+      Kompilowanie projektu â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\3.31.0-rc1\\CompilerIdC\\CompilerIdC.vcxprojâ€ť wykonane (domyĹ›lne elementy docelowe).
+      
+      Kompilacja powiodĹ‚a siÄ™.
+          OstrzeĹĽenia: 0
+          Liczba bĹ‚Ä™dĂłw: 0
+      
+      Czas, ktĂłry upĹ‚ynÄ…Ĺ‚: 00:00:00.60
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/3.31.0-rc1/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Wersja programu MSBuild 17.11.2+c078802d4 dla .NET Framework
+      Kompilacja rozpoczÄ™Ĺ‚a siÄ™ 12.01.2025 17:48:31.
+      
+      Projekt â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\3.31.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxprojâ€ť w wÄ™Ĺşle 1 (domyĹ›lne elementy docelowe).
+      PrepareForBuild:
+        Tworzenie katalogu â€žDebug\\â€ť.
+        Dane wyjĹ›ciowe ze strukturÄ… sÄ… wĹ‚Ä…czone. Formatowanie diagnostyki kompilatora bÄ™dzie odzwierciedlaÄ‡ hierarchiÄ™ bĹ‚Ä™dĂłw. Aby uzyskaÄ‡ wiÄ™cej informacji, zobacz https://aka.ms/cpp/structured-output.
+        Tworzenie katalogu â€žDebug\\CompilerIdCXX.tlog\\â€ť.
+      InitializeBuildStatus:
+        Trwa tworzenie â€žDebug\\CompilerIdCXX.tlog\\unsuccessfulbuildâ€ť, poniewaĹĽ okreĹ›lono "AlwaysCreate".
+        Modyfikowanie â€žDebug\\CompilerIdCXX.tlog\\unsuccessfulbuildâ€ť.
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> E:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\3.31.0-rc1\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Usuwanie pliku â€žDebug\\CompilerIdCXX.tlog\\unsuccessfulbuildâ€ť.
+        Modyfikowanie â€žDebug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstateâ€ť.
+      Kompilowanie projektu â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\3.31.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxprojâ€ť wykonane (domyĹ›lne elementy docelowe).
+      
+      Kompilacja powiodĹ‚a siÄ™.
+          OstrzeĹĽenia: 0
+          Liczba bĹ‚Ä™dĂłw: 0
+      
+      Czas, ktĂłry upĹ‚ynÄ…Ĺ‚: 00:00:00.60
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/3.31.0-rc1/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-nq9q33"
+      binary: "E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-nq9q33"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-nq9q33'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f18af.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Wersja programu MSBuild 17.11.2+c078802d4 dla .NET Framework
+        Kompilacja rozpoczÄ™Ĺ‚a siÄ™ 12.01.2025 17:48:32.
+        
+        Projekt â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-nq9q33\\cmTC_f18af.vcxprojâ€ť w wÄ™Ĺşle 1 (domyĹ›lne elementy docelowe).
+        PrepareForBuild:
+          Tworzenie katalogu â€žcmTC_f18af.dir\\Debug\\â€ť.
+          Dane wyjĹ›ciowe ze strukturÄ… sÄ… wĹ‚Ä…czone. Formatowanie diagnostyki kompilatora bÄ™dzie odzwierciedlaÄ‡ hierarchiÄ™ bĹ‚Ä™dĂłw. Aby uzyskaÄ‡ wiÄ™cej informacji, zobacz https://aka.ms/cpp/structured-output.
+          Tworzenie katalogu â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-nq9q33\\Debug\\â€ť.
+          Tworzenie katalogu â€žcmTC_f18af.dir\\Debug\\cmTC_f18af.tlog\\â€ť.
+        InitializeBuildStatus:
+          Trwa tworzenie â€žcmTC_f18af.dir\\Debug\\cmTC_f18af.tlog\\unsuccessfulbuildâ€ť, poniewaĹĽ okreĹ›lono "AlwaysCreate".
+          Modyfikowanie â€žcmTC_f18af.dir\\Debug\\cmTC_f18af.tlog\\unsuccessfulbuildâ€ť.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f18af.dir\\Debug\\\\" /Fd"cmTC_f18af.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ wersja kompilatora optymalizujÄ…cego 19.41.34120 dla x64
+          Copyright (C) Microsoft Corporation. Wszystkie prawa zastrzeĹĽone.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f18af.dir\\Debug\\\\" /Fd"cmTC_f18af.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-nq9q33\\Debug\\cmTC_f18af.exe" /INCREMENTAL /ILK:"cmTC_f18af.dir\\Debug\\cmTC_f18af.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-nq9q33/Debug/cmTC_f18af.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-nq9q33/Debug/cmTC_f18af.lib" /MACHINE:X64  /machine:x64 cmTC_f18af.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_f18af.vcxproj -> E:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-nq9q33\\Debug\\cmTC_f18af.exe
+        FinalizeBuildStatus:
+          Usuwanie pliku â€žcmTC_f18af.dir\\Debug\\cmTC_f18af.tlog\\unsuccessfulbuildâ€ť.
+          Modyfikowanie â€žcmTC_f18af.dir\\Debug\\cmTC_f18af.tlog\\cmTC_f18af.lastbuildstateâ€ť.
+        Kompilowanie projektu â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-nq9q33\\cmTC_f18af.vcxprojâ€ť wykonane (domyĹ›lne elementy docelowe).
+        
+        Kompilacja powiodĹ‚a siÄ™.
+            OstrzeĹĽenia: 0
+            Liczba bĹ‚Ä™dĂłw: 0
+        
+        Czas, ktĂłry upĹ‚ynÄ…Ĺ‚: 00:00:00.57
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.41.34120.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-pdwu31"
+      binary: "E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-pdwu31"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-pdwu31'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_99017.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Wersja programu MSBuild 17.11.2+c078802d4 dla .NET Framework
+        Kompilacja rozpoczÄ™Ĺ‚a siÄ™ 12.01.2025 17:48:33.
+        
+        Projekt â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-pdwu31\\cmTC_99017.vcxprojâ€ť w wÄ™Ĺşle 1 (domyĹ›lne elementy docelowe).
+        PrepareForBuild:
+          Tworzenie katalogu â€žcmTC_99017.dir\\Debug\\â€ť.
+          Dane wyjĹ›ciowe ze strukturÄ… sÄ… wĹ‚Ä…czone. Formatowanie diagnostyki kompilatora bÄ™dzie odzwierciedlaÄ‡ hierarchiÄ™ bĹ‚Ä™dĂłw. Aby uzyskaÄ‡ wiÄ™cej informacji, zobacz https://aka.ms/cpp/structured-output.
+          Tworzenie katalogu â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-pdwu31\\Debug\\â€ť.
+          Tworzenie katalogu â€žcmTC_99017.dir\\Debug\\cmTC_99017.tlog\\â€ť.
+        InitializeBuildStatus:
+          Trwa tworzenie â€žcmTC_99017.dir\\Debug\\cmTC_99017.tlog\\unsuccessfulbuildâ€ť, poniewaĹĽ okreĹ›lono "AlwaysCreate".
+          Modyfikowanie â€žcmTC_99017.dir\\Debug\\cmTC_99017.tlog\\unsuccessfulbuildâ€ť.
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_99017.dir\\Debug\\\\" /Fd"cmTC_99017.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ wersja kompilatora optymalizujÄ…cego 19.41.34120 dla x64
+          Copyright (C) Microsoft Corporation. Wszystkie prawa zastrzeĹĽone.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_99017.dir\\Debug\\\\" /Fd"cmTC_99017.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"E:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-pdwu31\\Debug\\cmTC_99017.exe" /INCREMENTAL /ILK:"cmTC_99017.dir\\Debug\\cmTC_99017.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-pdwu31/Debug/cmTC_99017.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:/Source/Aviator/Dependencies/include/glad/CMakeFiles/CMakeScratch/TryCompile-pdwu31/Debug/cmTC_99017.lib" /MACHINE:X64  /machine:x64 cmTC_99017.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_99017.vcxproj -> E:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-pdwu31\\Debug\\cmTC_99017.exe
+        FinalizeBuildStatus:
+          Usuwanie pliku â€žcmTC_99017.dir\\Debug\\cmTC_99017.tlog\\unsuccessfulbuildâ€ť.
+          Modyfikowanie â€žcmTC_99017.dir\\Debug\\cmTC_99017.tlog\\cmTC_99017.lastbuildstateâ€ť.
+        Kompilowanie projektu â€žE:\\Source\\Aviator\\Dependencies\\include\\glad\\CMakeFiles\\CMakeScratch\\TryCompile-pdwu31\\cmTC_99017.vcxprojâ€ť wykonane (domyĹ›lne elementy docelowe).
+        
+        Kompilacja powiodĹ‚a siÄ™.
+            OstrzeĹĽenia: 0
+            Liczba bĹ‚Ä™dĂłw: 0
+        
+        Czas, ktĂłry upĹ‚ynÄ…Ĺ‚: 00:00:00.58
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.41.34120.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+...

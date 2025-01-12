@@ -1,0 +1,15 @@
+if(WIN32)
+    add_library(glad
+        src/glad.c
+        src/glad_wgl.c
+    )
+elseif(APPLE)
+    add_library(glad
+        src/glad.c
+    )
+elseif(UNIX)
+    add_library(glad
+        src/glad.c
+        src/glad_glx.c
+    )
+endif()

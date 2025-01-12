@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{e2800786-6251-4b40-b2fe-41ad1b2a27b0}</ProjectGuid>
+    <RootNamespace>Aviator</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;glew32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;glew32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;glew32.lib;glew32s.lib;glad.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencies\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;glew32.lib;glew32s.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Aviator.cpp" />
+    <ClCompile Include="Dependencies\include\entities\DynamicEntity.cc" />
+    <ClCompile Include="Dependencies\include\entities\Entity.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\Airplane.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\BatteryHolder.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\Camera.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\Light.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\ObstacleHolder.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\ParticleHolder.cc" />
+    <ClCompile Include="Dependencies\include\entities\gameObjects\Sky.cc" />
+    <ClCompile Include="Dependencies\include\gameEngine\Collision.cc" />
+    <ClCompile Include="Dependencies\include\gameEngine\Game.cc" />
+    <ClCompile Include="Dependencies\include\io\KeyboardManager.cc" />
+    <ClCompile Include="Dependencies\include\io\MouseManager.cc" />
+    <ClCompile Include="Dependencies\include\io\Parser.cc" />
+    <ClCompile Include="Dependencies\include\maths\Maths.cc" />
+    <ClCompile Include="Dependencies\include\maths\Object3D.cc" />
+    <ClCompile Include="Dependencies\include\models\Geometry.cc" />
+    <ClCompile Include="Dependencies\include\models\Loader.cc" />
+    <ClCompile Include="Dependencies\include\models\RawModel.cc" />
+    <ClCompile Include="Dependencies\include\renderEngine\DisplayManager.cc" />
+    <ClCompile Include="Dependencies\include\renderEngine\Renderer.cc" />
+    <ClCompile Include="Dependencies\include\shaders\BackgroundShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\EntityShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\MotionBlurShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\SeaShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\ShaderProgram.cc" />
+    <ClCompile Include="Dependencies\include\shaders\ShadowShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\UIShader.cc" />
+    <ClCompile Include="Dependencies\include\textures\Texture.cc" />
+    <ClCompile Include="Dependencies\include\utils\Debug.cc" />
+    <ClCompile Include="Dependencies\include\utils\File.cc" />
+    <ClCompile Include="main.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h" />
+    <ClInclude Include="Dependencies\include\entities\DynamicEntity.h" />
+    <ClInclude Include="Dependencies\include\entities\Entity.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\Airplane.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\BatteryHolder.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\Camera.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\Light.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\ObstacleHolder.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\ParticleHolder.h" />
+    <ClInclude Include="Dependencies\include\entities\gameObjects\Sky.h" />
+    <ClInclude Include="Dependencies\include\gameEngine\Collision.h" />
+    <ClInclude Include="Dependencies\include\gameEngine\Game.h" />
+    <ClInclude Include="Dependencies\include\io\KeyboardManager.h" />
+    <ClInclude Include="Dependencies\include\io\MouseManager.h" />
+    <ClInclude Include="Dependencies\include\io\Parser.h" />
+    <ClInclude Include="Dependencies\include\maths\Maths.h" />
+    <ClInclude Include="Dependencies\include\maths\Object3D.h" />
+    <ClInclude Include="Dependencies\include\models\Geometry.h" />
+    <ClInclude Include="Dependencies\include\models\Loader.h" />
+    <ClInclude Include="Dependencies\include\models\RawModel.h" />
+    <ClInclude Include="Dependencies\include\renderEngine\DisplayManager.h" />
+    <ClInclude Include="Dependencies\include\renderEngine\Renderer.h" />
+    <ClInclude Include="Dependencies\include\shaders\BackgroundShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\EntityShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\MotionBlurShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\SeaShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\ShaderProgram.h" />
+    <ClInclude Include="Dependencies\include\shaders\ShadowShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\UIShader.h" />
+    <ClInclude Include="Dependencies\include\textures\Texture.h" />
+    <ClInclude Include="Dependencies\include\utils\Debug.h" />
+    <ClInclude Include="Dependencies\include\utils\File.h" />
+    <ClInclude Include="glPrerequisites.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
