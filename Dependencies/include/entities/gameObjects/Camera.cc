@@ -16,26 +16,10 @@ Camera::Camera() {
   fov = CAMERA::FOV;
 }
 
-void Camera::changePosition(float degree) {
-  glm::mat4 r, t, t_1;
-  t = glm::translate(t, glm::vec3(0.0f, -position.y, 0.0f));
-  t_1 = glm::translate(t_1, glm::vec3(0.0f, position.y, 0.0f));
-  r = glm::rotate(r, degree, glm::vec3(0.0f, 1.0f, 0.0f));
-  r = t_1 * r * t;
-  position = glm::vec3(r * glm::vec4(position, 1.0f));
-  front = glm::vec3(r * glm::vec4(front, 1.0f));
-}
-
 void Camera::update() {
   float delta = (1.0f - 2 * MouseManager::getRawX() / (float) WIDTH);
   float z = Maths::clamp(delta, -1.0f, 1.0f, CAMERA::Z - 10.0f, CAMERA::Z + 80.0f);
   position.z = z;
-  if (KeyboardManager::isKeyDown(KEY_LEFT)) {
-    changePosition(-0.03f);
-  }
-  if (KeyboardManager::isKeyDown(KEY_RIGHT)) {
-    changePosition(0.03f);
-  }
 }
 
 glm::mat4 Camera::getProjectionMatrix() {

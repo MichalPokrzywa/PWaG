@@ -15,7 +15,7 @@ bool overlap(Object3D* o1, Object3D* o2) {
   if (!o1 || !o2)
     return false;
 
-  if (o1->type == SPHERE && o1->type == SPHERE) {
+  if (o1->type == SPHERE) {
     float distance = glm::length(o1->center - o2->center);
     return distance - (static_cast<Sphere*>(o1)->radius + static_cast<Sphere*>(o2)->radius) < 0;
   }

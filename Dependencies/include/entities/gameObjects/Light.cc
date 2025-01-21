@@ -18,13 +18,13 @@ const glm::vec3& Light::getPosition() {
 }
 
 void Light::update() {
-  // glm::mat4 t, t_1, r;
-  // glm::vec3 axis(0.0f, position.y, 0.0f);
-  // t = glm::translate(t, -axis);
-  // t_1 = glm::translate(t_1, axis);
-  // r = glm::rotate(r, 0.003f, axis);
-  // position = t_1 * (r * (t * glm::vec4(position, 1.0f)));
-  // light.setPosition(position.x, position.y, position.z);
+   glm::mat4 t, t_1, r;
+   glm::vec3 axis(0.0f, position.y, 0.0f);
+   t = glm::translate(t, -axis);
+   t_1 = glm::translate(t_1, axis);
+   r = glm::rotate(r, 0.003f, axis);
+   position = t_1 * (r * (t * glm::vec4(position, 1.0f)));
+   Light::theOne().setPosition(position.x, position.y, position.z);
 }
 
 Light& Light::theOne() {
