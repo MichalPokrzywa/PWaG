@@ -7,6 +7,7 @@ private:
   Renderer renderer;
 
   double currentTime, lastTime, previousSecond, delta;
+  bool reset = false;
   int updates = 0;
 public:
   Game();
@@ -15,6 +16,7 @@ public:
   void run();
   bool shouldRun();
   bool shouldUpdate();
+  void resetGame();
 
   static void init();
   static Game& theOne();

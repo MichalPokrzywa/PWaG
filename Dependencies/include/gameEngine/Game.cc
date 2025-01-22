@@ -18,6 +18,8 @@
 #include <glm/glm.hpp>
 #include <algorithm>
 #include <iostream>
+#include <thread>
+#include <chrono>
 using std::cout;
 
 #ifdef min
@@ -88,6 +90,11 @@ void Game::run() {
       // update health
       GAME::HEALTH -= 0.025f;
       GAME::HEALTH = Maths::clamp(-0.1f, GAME::HEALTH, 100.0f);
+      if (GAME::HEALTH <= 0.0f && !reset) {
+          reset = true;
+          std::thread(&Game::resetGame, this).detach();
+      }
+
       ++updates;
     }
 
@@ -110,6 +117,16 @@ bool Game::shouldUpdate() {
   } else {
     return false;
   }
+}
+
+void Game::resetGame() {
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    GAME::HEALTH = 100.0f;
+    GAME::AIRPLANE_DISTANCE = 0.0f;
+    GAME::MILES = 0.0f;
+    TIMER = 0;
+	reset = false;
+    cout << "Game has been reset.\n";
 }
 
 /* Helper function implementation */
