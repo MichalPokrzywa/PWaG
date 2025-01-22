@@ -1,11 +1,19 @@
 // RawModel.h
 #pragma once
-
+#include <string>
+#include <vector>
 class RawModel {
 private:
   unsigned int vaoID;
   unsigned int vertexCount;
   int vbos;
+  // Struktury danych dla wierzcho³ków, normalnych i UV
+  struct Vec3 {
+      float x, y, z;
+  };
+  struct Vec2 {
+      float u, v;
+  };
 public:
   RawModel(unsigned int vaoID, unsigned int vertexCount, int vbos = 2);
 

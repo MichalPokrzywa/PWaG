@@ -33,7 +33,8 @@ void Geometry::initGeometry() {
   cube = createCube();
   sphere = createTetrahedron(4);
   sea = createSea(SEA::RADIUS, SEA::HEIGHT, SEA::RADIAL_SEGMENTS, SEA::HEIGHT_SEGMENTS);
-  cockpit = createCockpit();
+  //cockpit = createCockpit();
+  cockpit = Loader::loadFromOBJ("E:/Source/Aviator/Dependencies/include/Cat/Cat.obj");
   propeller = createPropeller();
   quad = createQuad();
 }
@@ -48,97 +49,7 @@ void Geometry::cleanGeometry() {
   delete quad;
 }
 
-// Struktury danych dla wierzcho³ków, normalnych i UV
-struct Vec3 {
-    float x, y, z;
-};
 
-struct Vec2 {
-    float u, v;
-};
-
-bool loadOBJ(
-    const std::string& filepath,
-    std::vector<Vec3>& outVertices,
-    std::vector<Vec2>& outUVs,
-    std::vector<Vec3>& outNormals
-) {
-    std::vector<unsigned int> vertexIndices, uvIndices, normalIndices;
-    std::vector<Vec3> tempVertices;
-    std::vector<Vec2> tempUVs;
-    std::vector<Vec3> tempNormals;
-
-    std::ifstream file(filepath);
-    if (!file.is_open()) {
-        std::cerr << "Cannot open file: " << filepath << std::endl;
-        return false;
-    }
-
-    std::string line;
-    while (std::getline(file, line)) {
-        std::istringstream lineStream(line);
-        std::string prefix;
-        lineStream >> prefix;
-
-        if (prefix == "v") {
-            Vec3 vertex;
-            lineStream >> vertex.x >> vertex.y >> vertex.z;
-            tempVertices.push_back(vertex);
-        }
-        else if (prefix == "vt") {
-            Vec2 uv;
-            lineStream >> uv.u >> uv.v;
-            uv.v = 1.0f - uv.v; // Odwróæ wspó³rzêdn¹ V (OpenGL w porównaniu z OBJ)
-            tempUVs.push_back(uv);
-        }
-        else if (prefix == "vn") {
-            Vec3 normal;
-            lineStream >> normal.x >> normal.y >> normal.z;
-            tempNormals.push_back(normal);
-        }
-        else if (prefix == "f") {
-            unsigned int vIndex[3], uvIndex[3], nIndex[3];
-            for (int i = 0; i < 3; ++i) {
-                lineStream >> vIndex[i];
-                if (lineStream.peek() == '/') {
-                    lineStream.ignore(1); // Pomiñ '/'
-                    if (lineStream.peek() != '/') {
-                        lineStream >> uvIndex[i];
-                    }
-                    if (lineStream.peek() == '/') {
-                        lineStream.ignore(1); // Pomiñ drugie '/'
-                        lineStream >> nIndex[i];
-                    }
-                }
-                vertexIndices.push_back(vIndex[i]);
-                uvIndices.push_back(uvIndex[i]);
-                normalIndices.push_back(nIndex[i]);
-            }
-        }
-    }
-
-    // Dopasuj indeksy
-    for (unsigned int i = 0; i < vertexIndices.size(); i++) {
-        unsigned int vertexIndex = vertexIndices[i];
-        Vec3 vertex = tempVertices[vertexIndex - 1];
-        outVertices.push_back(vertex);
-
-        if (!tempUVs.empty()) {
-            unsigned int uvIndex = uvIndices[i];
-            Vec2 uv = tempUVs[uvIndex - 1];
-            outUVs.push_back(uv);
-        }
-
-        if (!tempNormals.empty()) {
-            unsigned int normalIndex = normalIndices[i];
-            Vec3 normal = tempNormals[normalIndex - 1];
-            outNormals.push_back(normal);
-        }
-    }
-
-    file.close();
-    return true;
-}
 
 /* helper functions for createTetrahedron */
 #define TARGET_LENGTH 1.0

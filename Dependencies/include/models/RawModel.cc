@@ -1,6 +1,9 @@
 // RawModel.cc
 #include "RawModel.h"
 #include "glPrerequisites.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 RawModel::RawModel(unsigned int vaoID, unsigned int vertexCount, int vbos): vbos(vbos), vaoID(vaoID), vertexCount(vertexCount) { }
 
