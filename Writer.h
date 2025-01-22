@@ -1,11 +1,7 @@
 #ifndef WRITER_H
 #define WRITER_H
 
-#include <GL/glew.h>
-#include <GL/GLU.h>
-#include <GLFW/glfw3.h>
 #include <string>
-
 class Writer {
 public:
     // Rysowanie prostok¹ta na ekranie

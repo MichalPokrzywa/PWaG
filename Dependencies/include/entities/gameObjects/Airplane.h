@@ -13,6 +13,8 @@ private:
   glm::vec4 axisX, axisY, axisZ;
   std::vector<Entity*> components;
   float speed;
+  float totalRotation;
+  float y;
 
   // plane
   Entity cockpit;
@@ -46,6 +48,7 @@ public:
   void updateHair();
   void rotate(float dx, float dy, float dz, glm::vec3 center);
   void translate(float dx, float dy, float dz);
+  void resetFallState();
   void update();
   Entity& getBody();
   void knockBack(glm::vec3 otherPosition);

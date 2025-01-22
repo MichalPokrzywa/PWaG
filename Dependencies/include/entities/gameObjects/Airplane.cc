@@ -134,15 +134,12 @@ void Airplane::updateHair() {
 
 void Airplane::update() {
   if (GAME::HEALTH <= 0.0f) {
-    static float totalRotation = 0.0f;
-    static float y = 0.0f;
-    const float zRotation = 0.3f;
-    totalRotation += zRotation;
+    totalRotation += 0.3f;
     y += 0.01f;
     if (y <= 2.0f)
       translate(0.0f, -y, 0.0f);
     if (totalRotation < 80.0f)
-      rotate(0.0f, 0.0f, -glm::radians(zRotation), position);
+      rotate(0.0f, 0.0f, -glm::radians(0.3f), position);
   } else {
     speed = Maths::clamp(MouseManager::getX(), -0.5f, 0.5f, PLANE_MIN_SPEED, PLANE_MAX_SPEED);
     float targetX = Maths::clamp(MouseManager::getX(), -1.0f, 1.0f, -AIRPLANE::AMPWIDTH, -0.7f * AIRPLANE::AMPWIDTH);
@@ -182,6 +179,12 @@ void Airplane::knockBack(glm::vec3 otherPosition) {
   COLLISION_SPEED_X = 20.0f * distance.x / length;
   AMBIENT_LIGHT_INTENSITY = 2.0f;
 }
+
+void Airplane::resetFallState() {
+    totalRotation = 0.0f;
+    y = 0.0f;
+}
+
 
 Entity& Airplane::getBody() {
   return cockpit;

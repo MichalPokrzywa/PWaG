@@ -1,6 +1,9 @@
 #include "Writer.h"
 #include <windows.h> // Potrzebne do wglUseFontBitmaps
 #include <cstring>   // Do strlen
+#include <GL/glew.h>
+#include <GL/GLU.h>
+#include <GLFW/glfw3.h>
 
 namespace {
     GLuint base = 0; // Baza list dla czcionek
@@ -32,13 +35,16 @@ namespace {
 }
 
 void Writer::drawRectangle(float x, float y, float width, float height, float r, float g, float b, float a) {
+    //glClear(GL_COLOR_BUFFER_BIT);
     glColor4f(r, g, b, a); // Ustawienie koloru z przezroczystoœci¹
-    glBegin(GL_QUADS);
+	glLineWidth(30); // Gruboœæ linii
+    glBegin(GL_POLYGON);
     glVertex2f(x, y);
     glVertex2f(x + width, y);
     glVertex2f(x + width, y + height);
     glVertex2f(x, y + height);
     glEnd();
+    glFlush();
 }
 
 void Writer::drawText(float x, float y, const std::string& text) {
@@ -59,7 +65,7 @@ void Writer::showMessage(const std::string& message) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Rysowanie ciemnego t³a
-    drawRectangle(-1.0f, -1.0f, 2.0f, 2.0f, 0.0f, 0.0f, 0.0f, 0.5f);
+    drawRectangle(50.0f, 90.0f, 50.0f, 60.0f, 0.0f, 0.0f, 0.4f, 0.5f);
 
     // Rysowanie tekstu
     glColor3f(1.0f, 1.0f, 1.0f); // Bia³y tekst

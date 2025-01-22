@@ -1,6 +1,5 @@
 // Game.cc
 #include "Game.h"
-//#include "../../Writer.h"
 #include "Collision.h"
 #include <common.h>
 #include <maths/Maths.h>
@@ -21,6 +20,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include "../../Writer.h"
 using std::cout;
 
 #ifdef min
@@ -33,7 +33,7 @@ using std::cout;
 
 float GAME::AIRPLANE_DISTANCE = 0.0f;
 float GAME::MILES = 0.0f;
-float GAME::HEALTH = 100.0f;
+float GAME::HEALTH = 100.0f; // 100.0f; pamiêtaj zmieniæ
 float TIMER = 0;
 
 /* Helper function declaration */
@@ -65,19 +65,6 @@ Game& Game::theOne() {
 }
 
 void Game::run() {
-    //if (GAME::HEALTH <= 0.0f) {
-    //    DisplayManager::prepareDisplay();
-
-    //    // Wyœwietlenie komunikatu koñca gry
-    //    Writer::showMessage("Koniec gry");
-
-    //    DisplayManager::updateDisplay();
-    //    std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Drobne opóŸnienie do renderowania
-
-    //    if (shouldRun()) {
-    //        return; // Nie resetuj gry, czekaj na zamkniêcie
-    //    }
-    //}
     if (shouldUpdate()) {
       // temporary code for updating game angle
       GAME::AIRPLANE_DISTANCE += GAME::SPEED;
@@ -104,10 +91,10 @@ void Game::run() {
       // update health
       GAME::HEALTH -= 0.025f;
       GAME::HEALTH = Maths::clamp(-0.1f, GAME::HEALTH, 100.0f);
-      //if (GAME::HEALTH <= 0.0f && !reset) {
-      //    reset = true;
-      //    std::thread(&Game::resetGame, this).detach();
-      //}
+      if (GAME::HEALTH <= 0.0f && !reset) {
+          reset = true;
+          std::thread(&Game::resetGame, this).detach();
+      }
 
       ++updates;
     }
@@ -139,6 +126,9 @@ void Game::resetGame() {
     GAME::AIRPLANE_DISTANCE = 0.0f;
     GAME::MILES = 0.0f;
     TIMER = 0;
+
+    Airplane::theOne().resetFallState(); // Resetowanie stanu spadania samolotu
+
 	reset = false;
     cout << "Game has been reset.\n";
 }
