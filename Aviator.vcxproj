@@ -172,6 +172,7 @@
     <ClCompile Include="Dependencies\include\utils\Debug.cc" />
     <ClCompile Include="Dependencies\include\utils\File.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -207,6 +208,7 @@
     <ClInclude Include="Dependencies\include\utils\Debug.h" />
     <ClInclude Include="Dependencies\include\utils\File.h" />
     <ClInclude Include="glPrerequisites.h" />
+    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

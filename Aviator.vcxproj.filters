@@ -114,6 +114,9 @@
     <ClCompile Include="Dependencies\include\utils\File.cc">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Writer.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -213,6 +216,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Dependencies\include\utils\File.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Writer.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
