@@ -14,6 +14,12 @@ namespace Geometry {
   extern RawModel* propeller;
   extern RawModel* quad;
 
+  // Inicjalizuje wszystkie modele geometryczne
   void initGeometry();
+
+  // Czyœci wszystkie za³adowane modele
   void cleanGeometry();
+
+  // £aduje model OBJ i zwraca model RawModel
+  bool loadModelFromOBJ(const std::string& filepath, RawModel*& outModel);
 };
