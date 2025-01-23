@@ -6,16 +6,22 @@
 #include <iostream>
 #include <vector>
 #include <glm/vec2.hpp>
+#include <filesystem>
+#include <windows.h>
+#include <string>
+#include <iostream>
+
 using std::vector;
 
 vector<unsigned int> Loader::vaos;
 vector<unsigned int> Loader::vbos;
 
-
 RawModel* Loader::loadFromOBJ(const std::string& filePath) {
     std::ifstream file(filePath);
     if (!file.is_open()) {
         std::cerr << "Error: Could not open OBJ file " << filePath << "\n";
+        std::filesystem::path cwd = std::filesystem::current_path();
+        std::cout << "Current working directory: " << cwd << std::endl;
         return nullptr;
     }
 

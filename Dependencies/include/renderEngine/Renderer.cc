@@ -44,16 +44,20 @@ Renderer::~Renderer() {}
 
 void Renderer::render() {
   // render to depth map
+	
   glViewport(0, 0, SHADOW::WIDTH, SHADOW::HEIGHT); // temporary
   glBindFramebuffer(GL_FRAMEBUFFER, ShadowShader::getFboID());
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glCullFace(GL_FRONT);
   seaShadowShader.render();
+
   entityShadowShader.render();
   glCullFace(GL_BACK);
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
   glViewport(0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT);
+
+
   // render the actual scene to image
   glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
   glActiveTexture(GL_TEXTURE0);
@@ -64,7 +68,7 @@ void Renderer::render() {
   seaShader.render();
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-  // motion blur
+   // motion blur
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, colorTexture);

@@ -81,7 +81,7 @@ void Game::run() {
       ParticleHolder::theOne().update();
 
       renderer.render();
-
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
       ObstacleHolder::theOne().update();
       BatteryHolder::theOne().update();
       Sky::theOne().update();

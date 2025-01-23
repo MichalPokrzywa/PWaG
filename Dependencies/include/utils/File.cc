@@ -3,7 +3,7 @@
 using std::string;
 using std::cout;
 
-string extensionTable[] = {".vert", ".geom", ".frag", ".obj", ".png", ".txt", "" };
+string extensionTable[] = {".vert", ".geom", ".frag", ".obj", ".png", ".txt",".obj", "" };
 string baseDir(Extension extension);
 
 File::File(): m_path(""), m_extension(unknown) {}
