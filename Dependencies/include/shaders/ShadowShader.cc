@@ -20,7 +20,7 @@ ShadowShader::ShadowShader(bool isSeaShadow): isSeaShadow(isSeaShadow) {
     const char* FRAGMENT_FILE = "Dependencies/include/shaders/seaShadow.frag";
     ShaderProgram::init(VERTEX_FILE, FRAGMENT_FILE);
   } else {
-    const char* VERTEX_FILE = "Dependencies/include/shaders/shaders/entityShadow.vert";
+    const char* VERTEX_FILE = "Dependencies/include/shaders/entityShadow.vert";
     const char* FRAGMENT_FILE = "Dependencies/include/shaders/entityShadow.frag";
     ShaderProgram::init(VERTEX_FILE, FRAGMENT_FILE);
   }

@@ -122,7 +122,8 @@ unsigned int ShaderProgram::loadShader(const char* file, unsigned int type) {
   } catch (std::exception& e) {
     std::cout << "==================================================\n";
     std::cout << "ERROR::SHADER: Failed to read file\n";
-    std::cout << e.what();
+    std::cout << e.what() <<std::endl;
+    std::cout << file;
     std::cout << "\n==================================================\n";
     return 0;
   }
