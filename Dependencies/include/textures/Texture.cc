@@ -10,7 +10,8 @@ Texture::Texture(const Texture& other):
 Texture::Texture(unsigned int textureID, int size, int type):
   m_textureID(textureID), m_size(size), m_type(type) {}
 
-void Texture::bindToUint(unsigned int unit) {
+void Texture::bindToUint(unsigned int unit) const
+{
   glActiveTexture(GL_TEXTURE0 + unit);
   glBindTexture(m_type, m_textureID);
 }

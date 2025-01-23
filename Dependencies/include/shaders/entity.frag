@@ -4,6 +4,7 @@ in vec3 Normal;
 in vec3 ToCameraVector;
 in vec4 LightSpaceFragPos;
 in vec4 ViewSpace;
+in vec2 TexCoords; // Add texture coordinates
 smooth in vec4 CurPos;
 smooth in vec4 PrevPos;
 
@@ -13,8 +14,10 @@ layout (location = 1) out vec4 velocityTexture;
 uniform vec3 color;
 uniform vec3 lightPos; // Pozycja światła punktowego
 uniform sampler2D shadowMap;
+uniform sampler2D textureSampler; // Add texture sampler
 uniform float opacity;
 uniform int receiveShadow;
+uniform bool hasTexture; // Add uniform to check if texture is provided
 
 // Parametry światła punktowego
 uniform float lightConstant;  // Stała attenuacja
@@ -54,8 +57,6 @@ void main() {
   // Attenuacja (spadek intensywności światła)
   float attenuation = 1.0 / (lightConstant + lightLinear * distance + lightQuadratic * (distance * distance));
 
-  // Usunięto światło ambient
-
   // diffuse
   float diff = max(dot(unitNormal, lightDir), 0.0);
   vec3 diffuse = diff * lightColor;
@@ -72,8 +73,14 @@ void main() {
   if (receiveShadow == 1)
     shadow = visibility * shadowCalculation(LightSpaceFragPos);
 
+  // Texture sampling
+  vec4 texColor = vec4(1.0); // Default color (white)
+  if (hasTexture) {
+    texColor = texture(textureSampler, TexCoords); // Sample the texture if provided
+  }
+
   // Połącz oświetlenie z attenuacją (bez światła ambient)
-  vec3 fragColor = ((1 - shadow) * (diffuse + specular)) * color * attenuation;
+  vec3 fragColor = ((1 - shadow) * (diffuse + specular)) * color * texColor.rgb * attenuation;
 
   // fog
   float dist = abs(ViewSpace.z);
@@ -83,7 +90,7 @@ void main() {
   fogFactor = clamp(fogFactor, 0.0, 1.0);
 
   vec3 finalColor = (1.0 - fogFactor) * fogColor + fogFactor * fragColor;
-  colorTexture = vec4(finalColor, opacity);
+  colorTexture = vec4(finalColor, opacity * texColor.a); // Use texture alpha for opacity
 
   // velocity
   vec2 a = (CurPos.xy / CurPos.w) * 0.5 + 0.5;

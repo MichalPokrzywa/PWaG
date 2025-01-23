@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string>
 
-#define SRC_PATH "E:\Source\Aviator\Dependencies\include"
-#define TEXTURE_PATH "E:\Source\Aviator\Dependencies\include\textures"
+#define SRC_PATH ".\Dependencies\include"
+#define TEXTURE_PATH ".Dependencies\include\textures"
 
 enum Extension {
   vert = 0,

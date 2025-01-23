@@ -10,7 +10,7 @@ public:
   Texture(const Texture& other);
   Texture(unsigned int textureID, int size, int type = GL_TEXTURE_2D);
 
-  void bindToUint(unsigned int unit);
+  void bindToUint(unsigned int unit) const;
 
   unsigned int getID() const;
   int getSize() const;

@@ -19,7 +19,8 @@ Entity::Entity():
   scale(glm::vec3(0.0f)),
   opacity(1.0f),
   receiveShadow(true),
-  castShadow(true)
+  castShadow(true),
+  texture(Texture())
 {
   transformation[3].x = position.x;
   transformation[3].y = position.y;
@@ -37,7 +38,8 @@ Entity::Entity(const Entity& other):
   scale(other.scale),
   opacity(other.opacity),
   receiveShadow(other.receiveShadow),
-  castShadow(other.castShadow)
+  castShadow(other.castShadow),
+  texture(other.texture)
 {
   transformation[3].x = position.x;
   transformation[3].y = position.y;
@@ -45,30 +47,50 @@ Entity::Entity(const Entity& other):
   prevTransformation = transformation;
 }
 
-Entity::Entity(
-  RawModel* model,
-  glm::vec3 position,
-  glm::vec3 color,
-  glm::vec3 scale,
-  float opacity,
-  bool receiveShadow,
-  bool castShadow
+//Entity::Entity(
+//  RawModel* model,
+//  glm::vec3 position,
+//  glm::vec3 color,
+//  glm::vec3 scale,
+//  float opacity,
+//  bool receiveShadow,
+//  bool castShadow
+//):
+//  id(ID++),
+//  rigidBody(nullptr),
+//  model(model),
+//  position(position),
+//  transformation(glm::mat4(1.0f)),
+//  color(color),
+//  scale(scale),
+//  opacity(opacity),
+//  receiveShadow(receiveShadow),
+//  castShadow(castShadow)
+//{
+//  transformation[3].x = position.x;
+//  transformation[3].y = position.y;
+//  transformation[3].z = position.z;
+//  prevTransformation = transformation;
+//}
+
+Entity::Entity(RawModel* model, glm::vec3 position, glm::vec3 color, glm::vec3 scale, float opacity, bool receiveShadow,bool castShadow, const Texture& texture
 ):
-  id(ID++),
-  rigidBody(nullptr),
-  model(model),
-  position(position),
-  transformation(glm::mat4(1.0f)),
-  color(color),
-  scale(scale),
-  opacity(opacity),
-  receiveShadow(receiveShadow),
-  castShadow(castShadow)
+	id(ID++),
+	model(model),
+	position(position),
+	transformation(glm::mat4(1.0f)),
+	color(color),
+	scale(scale),
+	opacity(opacity),
+	receiveShadow(receiveShadow),
+	castShadow(castShadow),
+	texture(texture),
+	rigidBody(nullptr)
 {
-  transformation[3].x = position.x;
-  transformation[3].y = position.y;
-  transformation[3].z = position.z;
-  prevTransformation = transformation;
+    transformation[3].x = position.x;
+    transformation[3].y = position.y;
+    transformation[3].z = position.z;
+    prevTransformation = transformation;
 }
 
 Entity::~Entity() {
@@ -177,6 +199,13 @@ unsigned int Entity::getId() const {
   return id;
 }
 
+void Entity::setTexture(const Texture& texture) {
+	this->texture = texture;
+}
+
+const Texture& Entity::getTexture() const {
+	return this->texture;
+}
 Object3D* Entity::getBody() {
   if (!rigidBody)
     return nullptr;

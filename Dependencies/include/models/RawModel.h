@@ -14,6 +14,10 @@ private:
   struct Vec2 {
       float u, v;
   };
+  // Vertex data containers
+  std::vector<Vec3> vertices;
+  std::vector<Vec3> normals;
+  std::vector<Vec2> texCoords; // Add texture coordinates
 public:
   RawModel(unsigned int vaoID, unsigned int vertexCount, int vbos = 2);
 

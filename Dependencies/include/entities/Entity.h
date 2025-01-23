@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <map>
+#include <textures/Texture.h>
 
 struct Object3D;
 
@@ -11,6 +12,7 @@ class Entity {
 protected:
   unsigned int id;
   RawModel* model;
+  Texture texture; // Replace textureID with a Texture object
   float opacity;
   bool receiveShadow;
   bool castShadow;
@@ -22,8 +24,9 @@ protected:
 public:
   Entity();
   Entity(const Entity& other);
-  Entity(RawModel* model, glm::vec3 position = glm::vec3(0.0f), glm::vec3 color = glm::vec3(1.0f), glm::vec3 scale = glm::vec3(1.0f), float opacity = 1.0f, bool receiveShadow = true, bool castShadow = true);
-  virtual ~Entity();
+  //Entity(RawModel* model, glm::vec3 position = glm::vec3(0.0f), glm::vec3 color = glm::vec3(1.0f), glm::vec3 scale = glm::vec3(1.0f), float opacity = 1.0f, bool receiveShadow = true, bool castShadow = true);
+  Entity(RawModel* model, glm::vec3 position = glm::vec3(0.0f), glm::vec3 color = glm::vec3(1.0f), glm::vec3 scale = glm::vec3(1.0f), float opacity = 1.0f, bool receiveShadow = true, bool castShadow = true, const Texture& texture = Texture()); // Add textureID to constructorvirtual ~Entity();
+  ~Entity();
 
   glm::vec3 getPosition() const;
   void setPosition(float dx, float dy, float dz);
@@ -54,6 +57,8 @@ public:
   void setBody(Object3D* body);
 
   static void addEntity(Entity* entity);
+  void setTexture(const Texture& texture); // Setter for Texture object
+  const Texture& getTexture() const;       // Getter for Texture object
 };
 
 typedef std::map<RawModel*, std::vector<Entity*>> StaticEntities;

@@ -9,6 +9,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <algorithm>
 #include <iostream>
+
+#include "../../../../TextureLoader.h"
 using std::cout;
 using std::vector;
 
@@ -33,7 +35,7 @@ Airplane::Airplane() :
   axisX(glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)),
   axisY(glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)),
   axisZ(glm::vec4(0.0f, 0.0f, 1.0f, 0.0f)),
-  cockpit(Geometry::cockpit, glm::vec3(0.0f), red),
+  cockpit(Geometry::cockpit, glm::vec3(0.0f), red,glm::vec3(1.0f)),
   engine(Geometry::cube, glm::vec3(5.0f, 0.0f, 0.0f), white, glm::vec3(2.0f, 5.0f, 5.0f)),
   tail(Geometry::cube, glm::vec3(-4.0f, 2.0f, 0.0f), red, glm::vec3(1.5f, 2.0f, 0.5f)),
   sideWing(Geometry::cube, glm::vec3(0.0f, 1.5f, 0.0f), red, glm::vec3(3.0f, 0.5f, 12.0f)),
@@ -54,6 +56,8 @@ Airplane::Airplane() :
   hairSide(Geometry::cube, glm::vec3(-1.3f, 3.0f, 0.0f), brown, glm::vec3(1.2f, 0.4f, 1.2f)),
   hairBack(Geometry::cube, glm::vec3(-1.6f, 2.8f, 0.0f), brown, glm::vec3(0.2f, 0.8f, 1.0f))
 {
+    Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/Cat_diffuse.jpg");
+	cockpit.setTexture(texture);
   components.push_back(&cockpit);
   components.push_back(&propeller);
   components.push_back(&engine);

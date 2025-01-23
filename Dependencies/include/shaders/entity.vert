@@ -2,12 +2,14 @@
 #version 330 core
 in vec3 position;
 in vec3 normal;
+in vec2 texCoords; // Add texture coordinates
 
 out vec3 FragPos;
 out vec3 Normal;
 out vec3 ToCameraVector;
 out vec4 LightSpaceFragPos;
 out vec4 ViewSpace;
+out vec2 TexCoords; // Pass texture coordinates to the fragment shader
 smooth out vec4 CurPos;
 smooth out vec4 PrevPos;
 
@@ -29,4 +31,5 @@ void main() {
   Normal = normalize(mat3(transpose(inverse(transformationMatrix))) * normal);
   ToCameraVector = (inverse(viewMatrix) * vec4(0.0, 0.0, 0.0, 1.0)).xyz - worldPosition.xyz;
   LightSpaceFragPos = lightSpaceMatrix * worldPosition;
+  TexCoords = texCoords; // Pass texture coordinates to the fragment shader
 }
