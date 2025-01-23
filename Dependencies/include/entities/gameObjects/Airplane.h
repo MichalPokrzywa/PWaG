@@ -48,6 +48,7 @@ public:
   void updateHair();
   void rotate(float dx, float dy, float dz, glm::vec3 center);
   void translate(float dx, float dy, float dz);
+  glm::vec3& getPosition();
   void resetFallState();
   void update();
   Entity& getBody();

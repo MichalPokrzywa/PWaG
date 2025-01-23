@@ -71,7 +71,7 @@ void Game::run() {
 
       MouseManager::update();
       Camera::primary().update();
-      Light::theOne().update();
+      Light::theOne().update(Airplane::theOne().getPosition());
       DisplayManager::prepareDisplay();
 
       // update light intensity

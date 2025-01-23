@@ -50,7 +50,8 @@ void main() {
   vec3 unitToCameraVector = normalize(ToCameraVector);
 
   // Światło punktowe
-  vec3 lightColor = vec3(1.0, 1.0, 1.0); // Kolor światła
+  //vec3 lightColor = vec3(1.0, 0.9, 0.6); // Lekko żółty kolor światła
+  vec3 lightColor = vec3(1.0, 1.0, 1.0);
   vec3 lightDir = normalize(lightPos - FragPos); // Kierunek światła
   float distance = length(lightPos - FragPos); // Odległość od światła
 
@@ -80,7 +81,7 @@ void main() {
   }
 
   // Połącz oświetlenie z attenuacją (bez światła ambient)
-  vec3 fragColor = ((1 - shadow) * (diffuse + specular)) * color * texColor.rgb * attenuation;
+  vec3 fragColor = ((1 - shadow) * (diffuse + specular)) * color * texColor.rgb;
 
   // fog
   float dist = abs(ViewSpace.z);

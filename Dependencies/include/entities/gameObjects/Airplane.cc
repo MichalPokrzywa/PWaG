@@ -57,7 +57,7 @@ Airplane::Airplane() :
   hairBack(Geometry::cube, glm::vec3(-1.6f, 2.8f, 0.0f), brown, glm::vec3(0.2f, 0.8f, 1.0f))
 {
     Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/Cat_diffuse.jpg");
-	cockpit.setTexture(texture);
+    cockpit.setTexture(texture);
   components.push_back(&cockpit);
   components.push_back(&propeller);
   components.push_back(&engine);
@@ -187,6 +187,10 @@ void Airplane::knockBack(glm::vec3 otherPosition) {
 void Airplane::resetFallState() {
     totalRotation = 0.0f;
     y = 0.0f;
+}
+
+glm::vec3& Airplane::getPosition() {
+	return position = this->position;
 }
 
 
