@@ -35,7 +35,7 @@ void Geometry::initGeometry() {
   sea = createSea(SEA::RADIUS, SEA::HEIGHT, SEA::RADIAL_SEGMENTS, SEA::HEIGHT_SEGMENTS);
   //cockpit = createCockpit();
   cockpit = Loader::loadFromOBJ("./Dependencies/include/models/Cat/Cat.obj");
-  propeller = Loader::loadFromOBJ("./Dependencies/include/models/Skull/Skull.obj");
+  propeller = createPropeller();
   quad = createQuad();
 }
 

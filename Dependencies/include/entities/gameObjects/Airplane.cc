@@ -35,7 +35,7 @@ Airplane::Airplane() :
   axisX(glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)),
   axisY(glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)),
   axisZ(glm::vec4(0.0f, 0.0f, 1.0f, 0.0f)),
-  cockpit(Geometry::cockpit, glm::vec3(0.0f), red,glm::vec3(1.0f)),
+  cockpit(Geometry::cockpit, glm::vec3(0.0f,-3.0f,0.0f), red,glm::vec3(0.2f)),
   engine(Geometry::cube, glm::vec3(5.0f, 0.0f, 0.0f), white, glm::vec3(2.0f, 5.0f, 5.0f)),
   tail(Geometry::cube, glm::vec3(-4.0f, 2.0f, 0.0f), red, glm::vec3(1.5f, 2.0f, 0.5f)),
   sideWing(Geometry::cube, glm::vec3(0.0f, 1.5f, 0.0f), red, glm::vec3(3.0f, 0.5f, 12.0f)),
@@ -58,22 +58,23 @@ Airplane::Airplane() :
 {
     Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/Cat_diffuse.jpg");
     cockpit.setTexture(texture);
+    cockpit.changeRotation(-80, 59.7f, 130.5);
   components.push_back(&cockpit);
-  components.push_back(&propeller);
+  //components.push_back(&propeller);
   components.push_back(&engine);
-  components.push_back(&tail);
-  components.push_back(&sideWing);
-  components.push_back(&windShield);
-  components.push_back(&blade1);
-  components.push_back(&blade2);
-  components.push_back(&wheelProtectionR);
-  components.push_back(&wheelProtectionL);
-  components.push_back(&tireR);
-  components.push_back(&tireL);
-  components.push_back(&wheelAxis);
-  components.push_back(&suspension);
-  components.push_back(&tireB);
-  components.push_back(&wheelAxisB);
+  //components.push_back(&tail);
+  //components.push_back(&sideWing);
+  //components.push_back(&windShield);
+  //components.push_back(&blade1);
+  //components.push_back(&blade2);
+  //components.push_back(&wheelProtectionR);
+  //components.push_back(&wheelProtectionL);
+  //components.push_back(&tireR);
+  //components.push_back(&tireL);
+  //components.push_back(&wheelAxis);
+  //components.push_back(&suspension);
+  //components.push_back(&tireB);
+  //components.push_back(&wheelAxisB);
   components.push_back(&body);
   components.push_back(&face);
   components.push_back(&hairSide);
@@ -170,9 +171,9 @@ void Airplane::update() {
   // update hair
   updateHair();
   // update propeller
-  blade1.changeRotation(glm::vec3(axisX), glm::radians(10.0f));
-  blade2.changeRotation(glm::vec3(axisX), glm::radians(10.0f));
-  propeller.changeRotation(glm::vec3(axisX), glm::radians(10.0f));
+  //blade1.changeRotation(glm::vec3(axisX), glm::radians(10.0f));
+  //blade2.changeRotation(glm::vec3(axisX), glm::radians(10.0f));
+  //propeller.changeRotation(glm::vec3(axisX), glm::radians(10.0f));
   // move camera
   Camera::primary().chasePoint(position);
 } 

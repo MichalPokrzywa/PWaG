@@ -34,6 +34,7 @@ public:
   void changePosition(float dx, float dy, float dz);
 
   void changeRotation(float x, float y, float z);
+  void changeRotation2(float x, float y, float z);
   void changeRotation(glm::mat4 rotationMatrix);
   void changeRotation(glm::vec3 axis, float angle);
   void changeRotation(glm::vec3 axis, float angle, glm::vec3 center);
