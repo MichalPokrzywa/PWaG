@@ -38,6 +38,7 @@ void ShaderProgram::getAllUniformLocations() {
   location_transformationMatrix = getUniformLocation("transformationMatrix");
   location_lightSpaceMatrix = getUniformLocation("lightSpaceMatrix");
   location_ambientLightIntensity = getUniformLocation("ambientLightIntensity");
+  location_lightPos = getUniformLocation("lightPos"); // Dodane
 }
 
 void ShaderProgram::start() {

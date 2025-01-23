@@ -14,6 +14,7 @@ protected:
   int location_transformationMatrix;
   int location_lightSpaceMatrix;
   int location_ambientLightIntensity;
+  int  location_lightPos;
 
   virtual void getAllUniformLocations();
   virtual void bindAttributes() = 0;

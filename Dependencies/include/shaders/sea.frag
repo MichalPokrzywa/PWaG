@@ -1,4 +1,3 @@
-// sea.frag
 #version 330 core
 in vec4 ViewSpace;
 in vec3 Normal;
@@ -6,11 +5,9 @@ in vec4 LightSpaceFragPos;
 in vec3 FragPos;
 
 layout (location = 0) out vec4 colorTexture;
-// layout (location = 1) out vec4 velocityTexture;
 
-uniform vec3 lightPos;
+uniform vec3 lightPos; // Pozycja światła (dynamiczna)
 uniform sampler2D shadowMap;
-uniform float ambientLightIntensity;
 
 float shadowCalculation(vec4 lightSpaceFragPos) {
   vec3 projCoords = lightSpaceFragPos.xyz / lightSpaceFragPos.w;
@@ -36,13 +33,9 @@ void main() {
   vec3 seaColor = vec3(0.408, 0.765, 0.753);
   vec3 fogColor = vec3(0.968, 0.851, 0.667);
 
-  // directional light
+  // Światło punktowe
   vec3 lightColor = vec3(1.0, 1.0, 1.0);
-  vec3 lightDir = normalize(FragPos - lightPos);
-
-  // ambient
-  float ambientStrength = 0.15 * ambientLightIntensity;
-  vec3 ambient = ambientStrength * lightColor;
+  vec3 lightDir = normalize(FragPos - lightPos); // Kierunek światła
 
   // diffuse
   float diff = max(dot(Normal, lightDir), 0.0);
@@ -51,7 +44,7 @@ void main() {
   // shadow
   float visibility = 1.0;
   float shadow = visibility * shadowCalculation(LightSpaceFragPos);
-  vec3 fragColor = (ambient + (1 - shadow) * diffuse) * seaColor;
+  vec3 fragColor = ((1 - shadow) * diffuse) * seaColor;
 
   // fog
   float dist = abs(ViewSpace.z);
@@ -62,7 +55,4 @@ void main() {
 
   vec3 finalColor = (1.0 - fogFactor) * fogColor + fogFactor * fragColor;
   colorTexture = vec4(finalColor, min(0.8, fogFactor));
-
-  // velocity
-  // velocityTexture = vec4(1, 1, 1, 1);
 }

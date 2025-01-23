@@ -1,4 +1,3 @@
-// entity.frag
 #version 330 core
 in vec3 FragPos;
 in vec3 Normal;
@@ -12,11 +11,15 @@ layout (location = 0) out vec4 colorTexture;
 layout (location = 1) out vec4 velocityTexture;
 
 uniform vec3 color;
-uniform vec3 lightPos;
+uniform vec3 lightPos; // Pozycja światła punktowego
 uniform sampler2D shadowMap;
 uniform float opacity;
-uniform float ambientLightIntensity;
 uniform int receiveShadow;
+
+// Parametry światła punktowego
+uniform float lightConstant;  // Stała attenuacja
+uniform float lightLinear;    // Liniowa attenuacja
+uniform float lightQuadratic; // Kwadratowa attenuacja
 
 float shadowCalculation(vec4 lightSpaceFragPos) {
   vec3 projCoords = lightSpaceFragPos.xyz / lightSpaceFragPos.w;
@@ -43,13 +46,15 @@ void main() {
   vec3 unitNormal = normalize(Normal);
   vec3 unitToCameraVector = normalize(ToCameraVector);
 
-  // directional light
-  vec3 lightColor = vec3(1.0, 1.0, 1.0);
-  vec3 lightDir = normalize(lightPos - FragPos);
+  // Światło punktowe
+  vec3 lightColor = vec3(1.0, 1.0, 1.0); // Kolor światła
+  vec3 lightDir = normalize(lightPos - FragPos); // Kierunek światła
+  float distance = length(lightPos - FragPos); // Odległość od światła
 
-  // ambient
-  float ambientStrength = 0.4 * ambientLightIntensity;
-  vec3 ambient = ambientStrength * lightColor;
+  // Attenuacja (spadek intensywności światła)
+  float attenuation = 1.0 / (lightConstant + lightLinear * distance + lightQuadratic * (distance * distance));
+
+  // Usunięto światło ambient
 
   // diffuse
   float diff = max(dot(unitNormal, lightDir), 0.0);
@@ -66,7 +71,9 @@ void main() {
   float shadow = 0.0;
   if (receiveShadow == 1)
     shadow = visibility * shadowCalculation(LightSpaceFragPos);
-  vec3 fragColor = (ambient + (1 - shadow) * (diffuse + specular)) * color;
+
+  // Połącz oświetlenie z attenuacją (bez światła ambient)
+  vec3 fragColor = ((1 - shadow) * (diffuse + specular)) * color * attenuation;
 
   // fog
   float dist = abs(ViewSpace.z);
