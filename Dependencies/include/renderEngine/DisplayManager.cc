@@ -1,7 +1,9 @@
 // DisplayManager.cc
 #include "DisplayManager.h"
+#include "../gameEngine/Game.h"
 #include <GLFW/glfw3.h>
 #include <io/KeyboardManager.h>
+#include <entities/gameObjects/Camera.h>
 #include <common.h>
 #include <iostream>
 
@@ -90,6 +92,9 @@ void DisplayManager::setTitle(const char* title) {
 void keyCallback(GLFWwindow* window, int key, int scancodem, int action, int mode) {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, GL_TRUE);
+  }
+  if (key == GLFW_KEY_B && action == GLFW_PRESS) {
+      Game::wireframeMode = !Game::wireframeMode; // Prze³¹cz stan
   }
   if (key >= 0 && key < 1024) {
     if (action == GLFW_PRESS)

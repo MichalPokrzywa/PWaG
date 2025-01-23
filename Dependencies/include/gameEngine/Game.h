@@ -10,6 +10,8 @@ private:
   bool reset = false;
   int updates = 0;
 public:
+  static bool wireframeMode;
+  static bool flyMode;
   Game();
   ~Game();
 
