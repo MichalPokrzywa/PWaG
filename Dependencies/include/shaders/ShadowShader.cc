@@ -90,7 +90,7 @@ void ShadowShader::render() {
       }
       RawModel::unbind();
     }
-
+    
     for (auto& entry: dynamicEntities) {
       vector<DynamicEntity*>& entities = entry.second;
       entry.first->bind();
@@ -104,7 +104,7 @@ void ShadowShader::render() {
       }
       RawModel::unbind();
     }
-
+    
     vector<DynamicEntity*> particles = ParticleHolder::getParticles();
     if (particles.size())
       particles[0]->getModel()->bind();
@@ -118,7 +118,6 @@ void ShadowShader::render() {
       }
       RawModel::unbind();
   }
-
   stop();
 }
 

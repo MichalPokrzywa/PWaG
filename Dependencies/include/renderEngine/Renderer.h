@@ -6,6 +6,7 @@
 #include <shaders/SeaShader.h>
 #include <shaders/ShadowShader.h>
 #include <shaders/MotionBlurShader.h>
+#include <../../BloomShader.h>
 
 class Renderer {
 private:
@@ -16,6 +17,8 @@ private:
   ShadowShader seaShadowShader;
   ShadowShader entityShadowShader;
   MotionBlurShader motionBlurShader;
+  BloomShader bloomShader;
+  
 
   unsigned int frameBuffer;
   unsigned int colorTexture, velocityTexture;

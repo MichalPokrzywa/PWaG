@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aviator.cpp" />
+    <ClCompile Include="BloomShader.cpp" />
     <ClCompile Include="Dependencies\include\entities\DynamicEntity.cc" />
     <ClCompile Include="Dependencies\include\entities\Entity.cc" />
     <ClCompile Include="Dependencies\include\entities\gameObjects\Airplane.cc" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Dependencies\include\shaders\SeaShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\ShaderProgram.cc" />
     <ClCompile Include="Dependencies\include\shaders\ShadowShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\SunShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\UIShader.cc" />
     <ClCompile Include="Dependencies\include\textures\Texture.cc" />
     <ClCompile Include="Dependencies\include\utils\Debug.cc" />
@@ -177,6 +179,7 @@
     <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BloomShader.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="Dependencies\include\entities\DynamicEntity.h" />
     <ClInclude Include="Dependencies\include\entities\Entity.h" />
@@ -205,6 +208,7 @@
     <ClInclude Include="Dependencies\include\shaders\SeaShader.h" />
     <ClInclude Include="Dependencies\include\shaders\ShaderProgram.h" />
     <ClInclude Include="Dependencies\include\shaders\ShadowShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\SunShader.h" />
     <ClInclude Include="Dependencies\include\shaders\UIShader.h" />
     <ClInclude Include="Dependencies\include\textures\Texture.h" />
     <ClInclude Include="Dependencies\include\utils\Debug.h" />

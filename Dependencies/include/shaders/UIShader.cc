@@ -47,7 +47,7 @@ void UIShader::getAllUniformLocations() {
 }
 
 void UIShader::render() {
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   start();
   glEnable(GL_CULL_FACE);
   glEnable(GL_BLEND);

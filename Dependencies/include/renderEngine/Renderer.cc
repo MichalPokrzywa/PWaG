@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "glPrerequisites.h"
 #include <common.h>
+#include <./gameEngine/Game.h>
 #include <entities/Entity.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -9,9 +10,11 @@ using std::cout;
 
 Renderer::Renderer(): seaShadowShader(true) {
   ShadowShader::init();
+  bloomShader.init(ACTUAL_WIDTH, ACTUAL_HEIGHT);
   // generate buffer
   glGenFramebuffers(1, &frameBuffer);
   glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+
   // color
   glGenTextures(1, &colorTexture);
   glBindTexture(GL_TEXTURE_2D, colorTexture);
@@ -43,41 +46,53 @@ Renderer::Renderer(): seaShadowShader(true) {
 Renderer::~Renderer() {}
 
 void Renderer::render() {
-  // render to depth map
-	
-  glViewport(0, 0, SHADOW::WIDTH, SHADOW::HEIGHT); // temporary
-  glBindFramebuffer(GL_FRAMEBUFFER, ShadowShader::getFboID());
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glCullFace(GL_FRONT);
-  seaShadowShader.render();
+    // Renderowanie do mapy g³êbokoœci (shadow map)
+    glViewport(0, 0, SHADOW::WIDTH, SHADOW::HEIGHT);
+    glBindFramebuffer(GL_FRAMEBUFFER, ShadowShader::getFboID());
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glCullFace(GL_FRONT);
+    seaShadowShader.render();
+    entityShadowShader.render();
+    glCullFace(GL_BACK);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-  entityShadowShader.render();
-  glCullFace(GL_BACK);
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // Renderowanie sceny do tekstury HDR
+    glViewport(0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT);
+    glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, ShadowShader::getDepthMap().getID());
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glViewport(0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT);
+    // Renderowanie t³a (np. nieba)
+    backgroundShader.render();
 
+    // Renderowanie reszty sceny
+    entityShader.render();
+    seaShader.render();
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-  // render the actual scene to image
-  glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, ShadowShader::getDepthMap().getID());
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  backgroundShader.render();
-  entityShader.render();
-  seaShader.render();
-  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // Efekt Bloom
+    bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
 
-   // motion blur
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glActiveTexture(GL_TEXTURE0);
-  glBindTexture(GL_TEXTURE_2D, colorTexture);
-  glActiveTexture(GL_TEXTURE1);
-  glBindTexture(GL_TEXTURE_2D, velocityTexture);
-  motionBlurShader.render();
+    // Motion blur
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, colorTexture);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, velocityTexture);
 
-  // render ui
-  uiShader.render();
+    if (Game::wireframeMode) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        motionBlurShader.render();
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    else {
+        motionBlurShader.render();
+    }
 
-  entityShader.updateEntityVelocity();
+    // Renderowanie UI
+    uiShader.render();
+
+    // Aktualizacja prêdkoœci encji
+    entityShader.updateEntityVelocity();
 }
