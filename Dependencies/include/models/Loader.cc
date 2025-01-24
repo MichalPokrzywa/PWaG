@@ -50,7 +50,7 @@ RawModel* Loader::loadFromOBJ(const std::string& filePath) {
         else if (prefix == "vt") { // Texture coordinate
             glm::vec2 uv;
             iss >> uv.x >> uv.y;
-            uv.y = 1.0f - uv.y; // Flip Y-axis for OpenGL
+            uv.y = 1 - uv.y; // Flip Y-axis for OpenGL
             tempUVs.push_back(uv);
         }
         else if (prefix == "vn") { // Normal
@@ -74,7 +74,7 @@ RawModel* Loader::loadFromOBJ(const std::string& filePath) {
 
             if (i == 3) {
                 // Triangle face
-                for (int j = 0; j < 3; j++) {
+                for (int j = 2; j >= 0; j--) {
                     glm::vec3 vertex = tempVertices[vIndex[j]];
                     glm::vec2 uv = tempUVs[tIndex[j]];
                     glm::vec3 normal = tempNormals[nIndex[j]];
@@ -94,9 +94,9 @@ RawModel* Loader::loadFromOBJ(const std::string& filePath) {
                 }
             }
             else if (i == 4) {
-                // Quad face, split into two triangles: (v0, v1, v2) and (v0, v2, v3)
-                unsigned int tri1[] = { 0, 1, 2 };
-                unsigned int tri2[] = { 0, 2, 3 };
+                // Quad face, split into two triangles with consistent winding order
+                unsigned int tri1[] = { 0, 3, 2 }; // First triangle
+                unsigned int tri2[] = { 2, 1, 0 }; // Second triangle
 
                 for (unsigned int t = 0; t < 2; t++) {
                     unsigned int* tri = (t == 0) ? tri1 : tri2;

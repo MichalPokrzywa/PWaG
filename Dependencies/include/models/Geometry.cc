@@ -34,7 +34,7 @@ void Geometry::initGeometry() {
   sphere = createTetrahedron(4);
   sea = createSea(SEA::RADIUS, SEA::HEIGHT, SEA::RADIAL_SEGMENTS, SEA::HEIGHT_SEGMENTS);
   //cockpit = createCockpit();
-  cockpit = Loader::loadFromOBJ("./Dependencies/include/models/Cat/Cat.obj");
+  cockpit = Loader::loadFromOBJ("./Dependencies/include/models/Plane/AirPlane.obj");
   propeller = createPropeller();
   quad = createQuad();
 }

@@ -65,7 +65,6 @@ void Renderer::render() {
 
     // Renderowanie t³a (np. nieba)
     backgroundShader.render();
-
     // Renderowanie reszty sceny
     entityShader.render();
     seaShader.render();
@@ -73,6 +72,7 @@ void Renderer::render() {
 
     // Efekt Bloom
     bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
+
 
     // Motion blur
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
