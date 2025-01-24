@@ -19,8 +19,7 @@ Entity::Entity():
   scale(glm::vec3(0.0f)),
   opacity(1.0f),
   receiveShadow(true),
-  castShadow(true),
-  texture(Texture())
+  castShadow(true)
 {
   transformation[3].x = position.x;
   transformation[3].y = position.y;
@@ -38,8 +37,7 @@ Entity::Entity(const Entity& other):
   scale(other.scale),
   opacity(other.opacity),
   receiveShadow(other.receiveShadow),
-  castShadow(other.castShadow),
-  texture(other.texture)
+  castShadow(other.castShadow)
 {
   transformation[3].x = position.x;
   transformation[3].y = position.y;
@@ -73,7 +71,7 @@ Entity::Entity(const Entity& other):
 //  prevTransformation = transformation;
 //}
 
-Entity::Entity(RawModel* model, glm::vec3 position, glm::vec3 color, glm::vec3 scale, float opacity, bool receiveShadow,bool castShadow, const Texture& texture
+Entity::Entity(RawModel* model, glm::vec3 position, glm::vec3 color, glm::vec3 scale, float opacity, bool receiveShadow,bool castShadow
 ):
 	id(ID++),
 	model(model),
@@ -84,7 +82,6 @@ Entity::Entity(RawModel* model, glm::vec3 position, glm::vec3 color, glm::vec3 s
 	opacity(opacity),
 	receiveShadow(receiveShadow),
 	castShadow(castShadow),
-	texture(texture),
 	rigidBody(nullptr)
 {
     transformation[3].x = position.x;
@@ -199,13 +196,16 @@ unsigned int Entity::getId() const {
   return id;
 }
 
-void Entity::setTexture(const Texture& texture) {
-	this->texture = texture;
+void Entity::addTexture(const Texture& texture)
+{
+	textures.push_back(texture);
 }
 
-const Texture& Entity::getTexture() const {
-	return this->texture;
+const std::vector<Texture>& Entity::getTextures() const
+{
+	return textures;
 }
+
 Object3D* Entity::getBody() {
   if (!rigidBody)
     return nullptr;
@@ -219,9 +219,19 @@ void Entity::setBody(Object3D* body) {
 
 StaticEntities staticEntities;
 
+TexturedEntities texturedEntities;
+
 void Entity::addEntity(Entity* entity) {
   RawModel* key = entity->getModel();
   if (staticEntities.find(key) == staticEntities.end())
     staticEntities.insert(std::pair<RawModel*, vector<Entity*>>(key, vector<Entity*>()));
   staticEntities.at(key).push_back(entity);
+}
+
+void Entity::addTextureEntity(Entity* entity)
+{
+	RawModel* key = entity->getModel();
+	if (texturedEntities.find(key) == texturedEntities.end())
+		texturedEntities.insert(std::pair<RawModel*, vector<Entity*>>(key, vector<Entity*>()));
+	texturedEntities.at(key).push_back(entity);
 }

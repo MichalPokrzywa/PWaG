@@ -3,7 +3,6 @@
 #include <models/Geometry.h>
 #include <entities/Entity.h>
 #include <vector>
-
 class Entity;
 
 class Airplane {

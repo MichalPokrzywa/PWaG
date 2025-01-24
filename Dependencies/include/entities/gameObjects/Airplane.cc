@@ -9,8 +9,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <algorithm>
 #include <iostream>
+#include <utils/TextureLoader.h>
 
-#include "../../../../TextureLoader.h"
 using std::cout;
 using std::vector;
 
@@ -57,7 +57,7 @@ Airplane::Airplane() :
   hairBack(Geometry::cube, glm::vec3(-1.6f, 2.8f, 0.0f), brown, glm::vec3(0.2f, 0.8f, 1.0f))
 {
     Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/Cat_diffuse.jpg");
-    cockpit.setTexture(texture);
+	//cockpit.addTexture(texture);
     //cockpit.changeRotation(-80, 59.7f, 130.5);
   components.push_back(&cockpit);
   components.push_back(&propeller);
@@ -95,7 +95,14 @@ Airplane::Airplane() :
   }
 
   for (int i = 0; i < components.size(); ++i) {
-    Entity::addEntity(components[i]);
+    if(components[i]->getTextures().size() > 0)
+    {
+        Entity::addTextureEntity(components[i]);
+    }
+    else
+    {
+		Entity::addEntity(components[i]);
+    }
   }
 
   suspension.changeRotation(glm::vec3(0.0f, 0.0f, 1.0f), -0.3f);

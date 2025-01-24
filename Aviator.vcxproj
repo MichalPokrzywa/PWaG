@@ -174,8 +174,8 @@
     <ClCompile Include="Dependencies\include\textures\Texture.cc" />
     <ClCompile Include="Dependencies\include\utils\Debug.cc" />
     <ClCompile Include="Dependencies\include\utils\File.cc" />
+    <ClCompile Include="Dependencies\include\utils\TextureLoader.cpp" />
     <ClCompile Include="main.cc" />
-    <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -213,8 +213,8 @@
     <ClInclude Include="Dependencies\include\textures\Texture.h" />
     <ClInclude Include="Dependencies\include\utils\Debug.h" />
     <ClInclude Include="Dependencies\include\utils\File.h" />
+    <ClInclude Include="Dependencies\include\utils\TextureLoader.h" />
     <ClInclude Include="glPrerequisites.h" />
-    <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="Writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
