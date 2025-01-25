@@ -50,7 +50,7 @@ RawModel* Loader::loadFromOBJ(const std::string& filePath) {
         else if (prefix == "vt") { // Texture coordinate
             glm::vec2 uv;
             iss >> uv.x >> uv.y;
-            uv.y = 1 - uv.y; // Flip Y-axis for OpenGL
+            uv.y = uv.y; // Flip Y-axis for OpenGL
             tempUVs.push_back(uv);
         }
         else if (prefix == "vn") { // Normal
@@ -71,6 +71,7 @@ RawModel* Loader::loadFromOBJ(const std::string& filePath) {
                 i++;
                 if (i >= 4) break; // Stop at 4 vertices for quads
             }
+
 
             if (i == 3) {
                 // Triangle face

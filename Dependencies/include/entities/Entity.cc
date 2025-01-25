@@ -201,6 +201,11 @@ void Entity::addTexture(const Texture& texture)
 	textures.push_back(texture);
 }
 
+std::vector<float>& Entity::getBlendFactors()
+{
+	return blendFactors;
+}
+
 const std::vector<Texture>& Entity::getTextures() const
 {
 	return textures;

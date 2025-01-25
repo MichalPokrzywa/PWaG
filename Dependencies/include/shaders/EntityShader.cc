@@ -111,6 +111,12 @@ void EntityShader::updateEntityVelocity() {
       entities.at(i)->updatePrevTransformation();
     }
   }
+  for (auto& entry : texturedEntities) {
+      vector<Entity*>& entities = entry.second;
+      for (int i = 0; i < entities.size(); ++i) {
+          entities.at(i)->updatePrevTransformation();
+      }
+  }
 
   vector<DynamicEntity*>& particles = ParticleHolder::getParticles();
   for (int i = 0; i < particles.size(); ++i) {

@@ -8,11 +8,14 @@
 #include <shaders/MotionBlurShader.h>
 #include <../../BloomShader.h>
 
+#include <shaders/TextureShader.h>
+
 class Renderer {
 private:
   BackgroundShader backgroundShader;
   UIShader uiShader;
   EntityShader entityShader;
+  TextureShader textureShader;
   SeaShader seaShader;
   ShadowShader seaShadowShader;
   ShadowShader entityShadowShader;

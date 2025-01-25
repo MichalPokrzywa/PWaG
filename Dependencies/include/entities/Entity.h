@@ -13,6 +13,7 @@ protected:
   unsigned int id;
   RawModel* model;
   std::vector<Texture> textures; // Replace textureID with a Texture object
+  std::vector<float> blendFactors;
   float opacity;
   bool receiveShadow;
   bool castShadow;
@@ -60,6 +61,7 @@ public:
   static void addEntity(Entity* entity);
   static void addTextureEntity(Entity* entity);
   void addTexture(const Texture& texture); // Setter for Texture object
+	std::vector<float>& getBlendFactors();
   const std::vector<Texture>& getTextures() const;       // Getter for Texture object
 };
 

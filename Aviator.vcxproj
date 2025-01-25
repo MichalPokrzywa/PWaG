@@ -170,6 +170,7 @@
     <ClCompile Include="Dependencies\include\shaders\ShaderProgram.cc" />
     <ClCompile Include="Dependencies\include\shaders\ShadowShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\SunShader.cc" />
+    <ClCompile Include="Dependencies\include\shaders\TextureShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\UIShader.cc" />
     <ClCompile Include="Dependencies\include\textures\Texture.cc" />
     <ClCompile Include="Dependencies\include\utils\Debug.cc" />
@@ -209,6 +210,7 @@
     <ClInclude Include="Dependencies\include\shaders\ShaderProgram.h" />
     <ClInclude Include="Dependencies\include\shaders\ShadowShader.h" />
     <ClInclude Include="Dependencies\include\shaders\SunShader.h" />
+    <ClInclude Include="Dependencies\include\shaders\TextureShader.h" />
     <ClInclude Include="Dependencies\include\shaders\UIShader.h" />
     <ClInclude Include="Dependencies\include\textures\Texture.h" />
     <ClInclude Include="Dependencies\include\utils\Debug.h" />

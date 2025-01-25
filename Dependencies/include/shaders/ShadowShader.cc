@@ -90,6 +90,19 @@ void ShadowShader::render() {
       }
       RawModel::unbind();
     }
+    for (auto& entry : texturedEntities) {
+        vector<Entity*>& entities = entry.second;
+        entry.first->bind();
+        for (int i = 0; i < entities.size(); ++i) {
+            Entity* entity = entities[i];
+            if (!entity->getCastShadow())
+                continue;
+            RawModel* model = entity->getModel();
+            loadMatrix4f(location_transformationMatrix, entity->getTransformationMatrix());
+            glDrawArrays(GL_TRIANGLES, 0, model->getVertexCount());
+        }
+        RawModel::unbind();
+    }
     
     for (auto& entry: dynamicEntities) {
       vector<DynamicEntity*>& entities = entry.second;

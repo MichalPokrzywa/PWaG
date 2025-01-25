@@ -67,6 +67,9 @@ void Renderer::render() {
     backgroundShader.render();
     // Renderowanie reszty sceny
     entityShader.render();
+    textureShader.render();
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, ShadowShader::getDepthMap().getID());
     seaShader.render();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

@@ -13,7 +13,7 @@ protected:
   int location_receiveShadow;
   int location_prevPVM;
   int location_textureSampler;
-  int location_hasTexture;
+
   void bindAttributes();
   void getAllUniformLocations();
 public:
