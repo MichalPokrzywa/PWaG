@@ -55,9 +55,10 @@ void main() {
 
     // Lighting calculations
     vec3 lightDir = normalize(lightPos - FragPos);
-    float diff = max(dot(Normal, lightDir), 0.0);
+    float diff = max(dot(Normal, lightDir), 0);
     vec3 diffuse = diff * color;
 
+	//vec3 diffuse = color;
     // Shadow calculations
     float visibility = 1.0;
     if (receiveShadow == 1)
@@ -78,7 +79,7 @@ void main() {
 
     // Output the final color with opacity
     colorTexture = vec4(finalColor, opacity * blendedColor.a);
-
+	//colorTexture = vec4(vec3(diff), 1.0);
     // Velocity (unchanged)
     vec2 a = (CurPos.xy / CurPos.w) * 0.5 + 0.5;
     vec2 b = (PrevPos.xy / PrevPos.w) * 0.5 + 0.5;

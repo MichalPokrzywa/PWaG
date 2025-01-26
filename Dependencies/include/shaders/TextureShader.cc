@@ -83,6 +83,7 @@ void TextureShader::render()
 
             // Load textures for the entity
             if (Entity* texturedEntity = entity) {
+
                 const std::vector<Texture>& textures = texturedEntity->getTextures();
                 const std::vector<float>& blendFactors = texturedEntity->getBlendFactors(); // Assuming Entity has a getBlendFactors method
                 loadTextures(textures, blendFactors);

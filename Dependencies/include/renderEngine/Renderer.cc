@@ -46,7 +46,7 @@ Renderer::Renderer(): seaShadowShader(true) {
 Renderer::~Renderer() {}
 
 void Renderer::render() {
-    // Renderowanie do mapy g³êbokoœci (shadow map)
+    // 1. Render shadow map
     glViewport(0, 0, SHADOW::WIDTH, SHADOW::HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, ShadowShader::getFboID());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -56,16 +56,16 @@ void Renderer::render() {
     glCullFace(GL_BACK);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    // Renderowanie sceny do tekstury HDR
+    // 2. Render scene to HDR framebuffer
     glViewport(0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT);
     glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, ShadowShader::getDepthMap().getID());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Renderowanie t³a (np. nieba)
+    // Render background (e.g., sky)
     backgroundShader.render();
-    // Renderowanie reszty sceny
+    // Render the rest of the scene
     entityShader.render();
     textureShader.render();
     glActiveTexture(GL_TEXTURE0);
@@ -73,29 +73,31 @@ void Renderer::render() {
     seaShader.render();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-    // Efekt Bloom
-    bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
-
-
-    // Motion blur
+    // 3. Apply bloom effect
+    glViewport(0, 0, ACTUAL_WIDTH, ACTUAL_HEIGHT);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+
+    // 4. Apply motion blur
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, colorTexture);
+    glBindTexture(GL_TEXTURE_2D, colorTexture); // Use the bloomed texture
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, velocityTexture);
-
     if (Game::wireframeMode) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        motionBlurShader.render();
+        // motionBlurShader.render();
+        bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     }
     else {
-        motionBlurShader.render();
+        //motionBlurShader.render();
+        bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
     }
 
-    // Renderowanie UI
+    // 5. Render UI
     uiShader.render();
 
-    // Aktualizacja prêdkoœci encji
+    // 6. Update entity velocities
     entityShader.updateEntityVelocity();
 }

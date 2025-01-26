@@ -10,7 +10,6 @@ public:
 
     void init(unsigned int screenWidth, unsigned int screenHeight);
     void renderBloomEffect(unsigned int hdrTexture, unsigned int screenWidth, unsigned int screenHeight);
-
     unsigned int getBloomTexture() const;
 
 private:
@@ -18,16 +17,21 @@ private:
     void createTextures(unsigned int screenWidth, unsigned int screenHeight);
     void bindAttributes() override;
     void getAllUniformLocations() override;
+    void renderQuad();
 
-    unsigned int fboID; // Framebuffer dla ekstrakcji jasnych obszarów
-    unsigned int pingpongFBO[2]; // Framebuffery do rozmycia Gaussa (ping-pong)
-    unsigned int colorBuffers[2]; // Tekstury dla HDR i jasnych obszarów
-    unsigned int pingpongColorBuffers[2]; // Tekstury do rozmycia Gaussa
+    unsigned int fboID;
+    unsigned int pingpongFBO[2];
+    unsigned int colorBuffers[2];
+    unsigned int pingpongColorBuffers[2];
+    unsigned int rboDepth;
 
-    Texture bloomTexture; // Tekstura z efektem Bloom
+    unsigned int location_threshold;
+    unsigned int location_bloomStrength;
+    unsigned int location_horizontal;
+    unsigned int location_sceneTexture;
+    unsigned int location_bloomTexture;
+    unsigned int location_pass;
 
-    int location_threshold; // Lokacja uniforma dla progu jasnoœci
-    int location_bloomStrength; // Lokacja uniforma dla si³y efektu Bloom
-    int location_horizontal; // Lokacja uniforma dla kierunku rozmycia
+    Texture bloomTexture;
 };
 

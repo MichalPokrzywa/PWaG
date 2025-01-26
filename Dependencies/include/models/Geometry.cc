@@ -144,9 +144,9 @@ RawModel* createTetrahedron(int segments) {
 }
 
 glm::vec2 calculateUV(const glm::vec3& position) {
-    // Example: Spherical UV mapping
-    float u = 0.5f + atan2(position.z, position.x) / (2.0f * M_PI);
-    float v = 0.5f - asin(position.y) / M_PI;
+    glm::vec3 normalizedPos = glm::normalize(position); // Normalize the position
+    float u = 0.5f + atan2(normalizedPos.z, normalizedPos.x) / (2.0f * M_PI);
+    float v = 0.5f - asin(normalizedPos.y) / M_PI;
     return glm::vec2(u, v);
 }
 
@@ -188,6 +188,7 @@ RawModel* createSun(int segments) {
     assert(segments > 0);
     vector<glm::vec2> uvs;
     vector<glm::vec3> vertices;
+
     if (segments == 1) {
         glm::vec3 vert1(0.5f, 0.5f, 0.5f);
         glm::vec3 vert2(-0.5f, 0.5f, -0.5f);
@@ -216,16 +217,24 @@ RawModel* createSun(int segments) {
     }
 
     vector<float> vertexArray, normals, uvArray;
+
+    // Populate vertex array
     for (int i = 0; i < vertices.size(); ++i) {
         vertexArray.push_back(vertices[i].x);
         vertexArray.push_back(vertices[i].y);
         vertexArray.push_back(vertices[i].z);
-        uvArray.push_back(vertices[i].x);
-        uvArray.push_back(vertices[i].y);
     }
 
+    // Populate UV array
+    for (int i = 0; i < uvs.size(); ++i) {
+        uvArray.push_back(uvs[i].x);
+        uvArray.push_back(uvs[i].y);
+    }
+
+    // Calculate normals
     for (int i = 0; i < vertices.size(); i += 3) {
-        glm::vec3 normal = glm::cross(vertices[i] - vertices[i + 1], vertices[i + 2] - vertices[i + 1]);
+        glm::vec3 normal = glm::cross(vertices[i + 1] - vertices[i], vertices[i + 2] - vertices[i]);
+        normal = glm::normalize(normal); // Normalize the normal
         for (int j = 0; j < 3; ++j) {
             normals.push_back(normal.x);
             normals.push_back(normal.y);

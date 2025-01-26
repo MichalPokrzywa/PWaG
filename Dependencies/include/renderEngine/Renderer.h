@@ -10,6 +10,8 @@
 
 #include <shaders/TextureShader.h>
 
+#include "shaders/SunShader.h"
+
 class Renderer {
 private:
   BackgroundShader backgroundShader;

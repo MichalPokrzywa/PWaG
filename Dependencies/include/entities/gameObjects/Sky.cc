@@ -53,7 +53,7 @@ Sky::Sky(): cloudCount(20) {
   for (int i = 0; i < cloudCount; ++i) {
     createCloud(stepAngle * (float)i);
   }
-  sun();
+  //sun();
 }
 
 Sky::~Sky() {
@@ -90,7 +90,7 @@ void Sky::createCloud(float angle) {
 void Sky::sun() {
     float height = Maths::rand(60.0f, 140.0f) + SEA::RADIUS; //??????
 
-    glm::vec3 position( 10.f, Maths::rand(0.0f, 4.0f), Maths::rand(0.0f, 4.0f));
+    glm::vec3 position( 10.f, 70.f, -50.f);
     Entity* entity = new Entity(Geometry::sun, position, yellow, glm::vec3(2.0f), 1.0f, false, false);
     entity->changeRotation(0.0f, Maths::rand(0.0f, 2 * PI), Maths::rand(0.0f, 2.0f * PI));
     Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/sun_texture.png");
