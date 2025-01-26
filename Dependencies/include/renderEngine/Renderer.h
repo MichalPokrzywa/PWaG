@@ -6,7 +6,7 @@
 #include <shaders/SeaShader.h>
 #include <shaders/ShadowShader.h>
 #include <shaders/MotionBlurShader.h>
-#include <../../BloomShader.h>
+#include <../include/shaders/BloomShader.h>
 
 #include <shaders/TextureShader.h>
 

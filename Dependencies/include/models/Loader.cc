@@ -148,6 +148,14 @@ RawModel* Loader::loadToVAO(vector<float>& data1, int data1Dimension, vector<flo
   return new RawModel(vaoID, indices.size());
 }
 
+RawModel* Loader::loadToVAO(vector<float>& data1, int data1Dimension, vector<float>& data2, int data2Dimension, vector<float>& data3, int data3Dimension) {
+    unsigned int vaoID = createVAO();
+    storeDataInAttributeList(0, data1Dimension, data1);
+    storeDataInAttributeList(1, data2Dimension, data2);
+    storeDataInAttributeList(2, data3Dimension, data3);
+    return new RawModel(vaoID, data1.size());
+}
+
 RawModel* Loader::loadToVAO(vector<float>& data1, int data1Dimension, vector<float>& data2, int data2Dimension) {
   unsigned int vaoID = createVAO();
   storeDataInAttributeList(0, data1Dimension, data1);
@@ -160,6 +168,7 @@ RawModel* Loader::loadToVAO(vector<float>& data, int dimension) {
   storeDataInAttributeList(0, dimension, data);
   return new RawModel(vaoID, data.size(), 1);
 }
+
 
 void Loader::clean() {
   for (int i = 0; i < vaos.size(); ++i) {

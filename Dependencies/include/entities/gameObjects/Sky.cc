@@ -5,7 +5,12 @@
 #include <maths/Maths.h>
 #include <models/Geometry.h>
 #include <iostream>
+#include <utils/TextureLoader.h>
+
 using std::vector;
+
+
+glm::vec3 yellow(WHITE[0], WHITE[1], WHITE[2]);
 
 Cloud::Cloud() {
   rotationSpeed = Maths::rand(0.0f, 0.004f);
@@ -48,6 +53,7 @@ Sky::Sky(): cloudCount(20) {
   for (int i = 0; i < cloudCount; ++i) {
     createCloud(stepAngle * (float)i);
   }
+  sun();
 }
 
 Sky::~Sky() {
@@ -79,6 +85,20 @@ void Sky::createCloud(float angle) {
   glm::vec3 cloudPos(glm::cos(angle) * height, glm::sin(angle) * height - SEA::RADIUS, Maths::rand(-320.0f, -120.0f));
   cloud->translate(cloudPos.x, cloudPos.y, cloudPos.z);
   cloud->rotate(0.0f, 0.0f, angle + PI / 2.0f, cloudPos);
+}
+
+void Sky::sun() {
+    float height = Maths::rand(60.0f, 140.0f) + SEA::RADIUS; //??????
+
+    glm::vec3 position( 10.f, Maths::rand(0.0f, 4.0f), Maths::rand(0.0f, 4.0f));
+    Entity* entity = new Entity(Geometry::sun, position, yellow, glm::vec3(2.0f), 1.0f, false, false);
+    entity->changeRotation(0.0f, Maths::rand(0.0f, 2 * PI), Maths::rand(0.0f, 2.0f * PI));
+    Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/sun_texture.png");
+    entity->addTexture(texture);
+    entity->getBlendFactors().push_back(1.0f); // Blend factor for texture1
+    Entity::addTextureEntity(entity);
+
+    //glm::vec3 cloudPos(glm::cos(angle) * height, glm::sin(angle) * height - SEA::RADIUS, Maths::rand(-320.0f, -120.0f));
 }
 
 void Sky::update() {

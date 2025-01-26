@@ -3,8 +3,8 @@
 #include <iostream>
 
 BloomShader::BloomShader() {
-    const char* VERTEX_FILE = "Dependencies/include/shaders/bloom.vert";
-    const char* FRAGMENT_FILE = "Dependencies/include/shaders/bloom.frag";
+    const char* VERTEX_FILE = "./Dependencies/include/shaders/bloom_combine.vert";
+    const char* FRAGMENT_FILE = "./Dependencies/include/shaders/bloom_combine.frag";
     ShaderProgram::init(VERTEX_FILE, FRAGMENT_FILE);
 }
 

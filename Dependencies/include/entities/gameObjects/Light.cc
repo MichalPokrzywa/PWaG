@@ -19,8 +19,6 @@ const glm::vec3& Light::getPosition() {
 }
 
 void Light::update(glm::vec3& pos) {
-    // Wyświetl pozycję samolotu (do debugowania)
-    std::cout << "Samolot (pos): " << pos.x << ", " << pos.y << ", " << pos.z << std::endl;
 
     // Przesunięcie światła względem samolotu
     glm::vec3 offset(90.0f, 210.0f, 210.0f); // Dostosuj te wartości według potrzeb
@@ -29,9 +27,6 @@ void Light::update(glm::vec3& pos) {
     // Zaktualizuj pozycję światła
     position = newPosition;
     Light::theOne().setPosition(position.x, position.y, position.z);
-
-    // Wyświetl nową pozycję światła (do debugowania)
-    std::cout << "Światło (position): " << position.x << ", " << position.y << ", " << position.z << std::endl;
 }
 
 //void Light::update(glm::vec3& pos) {
