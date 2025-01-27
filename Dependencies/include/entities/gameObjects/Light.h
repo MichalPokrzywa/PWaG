@@ -12,5 +12,5 @@ public:
   void setPosition(float x, float y, float z);
   const glm::vec3& getPosition();
   void update(glm::vec3& pos);
-  static Light& theOne();
+  static Light& singleton();
 };

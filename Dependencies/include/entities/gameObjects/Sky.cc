@@ -108,7 +108,7 @@ void Sky::update() {
   }
 }
 
-Sky& Sky::theOne() {
+Sky& Sky::singleton() {
   static Sky sky;
   return sky;
 }

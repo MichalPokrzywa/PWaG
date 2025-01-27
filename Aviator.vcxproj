@@ -152,7 +152,6 @@
     <ClCompile Include="Dependencies\include\entities\gameObjects\Sky.cc" />
     <ClCompile Include="Dependencies\include\gameEngine\Collision.cc" />
     <ClCompile Include="Dependencies\include\gameEngine\Game.cc" />
-    <ClCompile Include="Dependencies\include\io\KeyboardManager.cc" />
     <ClCompile Include="Dependencies\include\io\MouseManager.cc" />
     <ClCompile Include="Dependencies\include\io\Parser.cc" />
     <ClCompile Include="Dependencies\include\maths\Maths.cc" />
@@ -169,7 +168,6 @@
     <ClCompile Include="Dependencies\include\shaders\SeaShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\ShaderProgram.cc" />
     <ClCompile Include="Dependencies\include\shaders\ShadowShader.cc" />
-    <ClCompile Include="Dependencies\include\shaders\SunShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\TextureShader.cc" />
     <ClCompile Include="Dependencies\include\shaders\UIShader.cc" />
     <ClCompile Include="Dependencies\include\textures\Texture.cc" />
@@ -177,7 +175,6 @@
     <ClCompile Include="Dependencies\include\utils\File.cc" />
     <ClCompile Include="Dependencies\include\utils\TextureLoader.cpp" />
     <ClCompile Include="main.cc" />
-    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
@@ -192,7 +189,6 @@
     <ClInclude Include="Dependencies\include\entities\gameObjects\Sky.h" />
     <ClInclude Include="Dependencies\include\gameEngine\Collision.h" />
     <ClInclude Include="Dependencies\include\gameEngine\Game.h" />
-    <ClInclude Include="Dependencies\include\io\KeyboardManager.h" />
     <ClInclude Include="Dependencies\include\io\MouseManager.h" />
     <ClInclude Include="Dependencies\include\io\Parser.h" />
     <ClInclude Include="Dependencies\include\maths\Maths.h" />
@@ -209,7 +205,6 @@
     <ClInclude Include="Dependencies\include\shaders\SeaShader.h" />
     <ClInclude Include="Dependencies\include\shaders\ShaderProgram.h" />
     <ClInclude Include="Dependencies\include\shaders\ShadowShader.h" />
-    <ClInclude Include="Dependencies\include\shaders\SunShader.h" />
     <ClInclude Include="Dependencies\include\shaders\TextureShader.h" />
     <ClInclude Include="Dependencies\include\shaders\UIShader.h" />
     <ClInclude Include="Dependencies\include\textures\Texture.h" />
@@ -217,7 +212,6 @@
     <ClInclude Include="Dependencies\include\utils\File.h" />
     <ClInclude Include="Dependencies\include\utils\TextureLoader.h" />
     <ClInclude Include="glPrerequisites.h" />
-    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

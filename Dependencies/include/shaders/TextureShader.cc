@@ -61,7 +61,7 @@ void TextureShader::render()
     glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
 
-    glm::vec3 lightPos(Light::theOne().getPosition());
+    glm::vec3 lightPos(Light::singleton().getPosition());
     loadInt(location_shadowMap, 0);
     loadVector3f(location_light, lightPos);
     loadMatrix4f(location_lightSpaceMatrix, Camera::primary().getLightSpaceMatrix());

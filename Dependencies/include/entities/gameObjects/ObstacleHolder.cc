@@ -55,7 +55,7 @@ void ObstacleHolder::update() {
   }
 }
 
-ObstacleHolder& ObstacleHolder::theOne() {
+ObstacleHolder& ObstacleHolder::singleton() {
   static ObstacleHolder obstacleHolder;
   return obstacleHolder;
 }

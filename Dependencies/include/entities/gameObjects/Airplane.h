@@ -53,6 +53,6 @@ public:
   Entity& getBody();
   void knockBack(glm::vec3 otherPosition);
 
-  static Airplane& theOne();
+  static Airplane& singleton();
   static std::vector<Entity*> rigidBody;
 };

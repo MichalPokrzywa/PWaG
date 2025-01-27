@@ -3,8 +3,8 @@
 
 int main() {
   Game::init();
-  while (Game::theOne().shouldRun()) {
-    Game::theOne().run();
+  while (Game::singleton().shouldRun()) {
+    Game::singleton().run();
   }
   return 0;
 }

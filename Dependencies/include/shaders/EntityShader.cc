@@ -40,7 +40,7 @@ void EntityShader::render() {
     glEnable(GL_BLEND);
     glEnable(GL_CULL_FACE);
     //glDisable(GL_CULL_FACE);
-    glm::vec3 lightPos(Light::theOne().getPosition());
+    glm::vec3 lightPos(Light::singleton().getPosition());
     loadInt(location_shadowMap, 0);
     loadFloat(location_ambientLightIntensity, AMBIENT_LIGHT_INTENSITY);
     loadVector3f(location_light, lightPos);

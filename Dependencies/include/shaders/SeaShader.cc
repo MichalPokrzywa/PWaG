@@ -45,7 +45,7 @@ void SeaShader::render() {
   glDisable(GL_CULL_FACE);
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_BLEND);
-  glm::vec3 lightPos(Light::theOne().getPosition());
+  glm::vec3 lightPos(Light::singleton().getPosition());
   loadFloat(location_ambientLightIntensity, AMBIENT_LIGHT_INTENSITY);
   loadInt(location_shadowMap, 0);
   loadFloat(location_time, TIMER);

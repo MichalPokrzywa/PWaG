@@ -61,7 +61,7 @@ void BatteryHolder::update() {
   }
 }
 
-BatteryHolder& BatteryHolder::theOne() {
+BatteryHolder& BatteryHolder::singleton() {
   static BatteryHolder batteryHolder;
   return batteryHolder;
 }

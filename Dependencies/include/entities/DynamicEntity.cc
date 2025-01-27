@@ -29,7 +29,7 @@ DynamicEntity::~DynamicEntity() {
     removeEntity(this);
     // generate particle effects
     float density = type == OBSTACLE ? 15 : 8;
-    ParticleHolder::theOne().spawnParticles(position, density, color, (float) density * scale.x / 15.0f);
+    ParticleHolder::singleton().spawnParticles(position, density, color, (float) density * scale.x / 15.0f);
   }
 }
 

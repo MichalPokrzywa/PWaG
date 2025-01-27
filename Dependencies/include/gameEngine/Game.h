@@ -21,5 +21,5 @@ public:
   void resetGame();
 
   static void init();
-  static Game& theOne();
+  static Game& singleton();
 };

@@ -2,7 +2,6 @@
 #include "DisplayManager.h"
 #include "../gameEngine/Game.h"
 #include <GLFW/glfw3.h>
-#include <io/KeyboardManager.h>
 #include <entities/gameObjects/Camera.h>
 #include <common.h>
 #include <iostream>
@@ -28,7 +27,6 @@ void DisplayManager::createDisplay() {
   WIDTH = (mode->width) * 0.7;
   HEIGHT = (mode->height) * 0.7;
 
-  // window = glfwCreateWindow(WIDTH, HEIGHT, "The Aviator", glfwGetPrimaryMonitor(), NULL);
   window = glfwCreateWindow(WIDTH, HEIGHT, "The Aviator", NULL, NULL);
 
   if (window == nullptr) {
@@ -41,7 +39,6 @@ void DisplayManager::createDisplay() {
   glfwMakeContextCurrent(window);
 
   glfwSetKeyCallback(window, keyCallback);
-  //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
   if (gladLoadGL() == 0) {
     cout << "======================================\n";
@@ -95,11 +92,5 @@ void keyCallback(GLFWwindow* window, int key, int scancodem, int action, int mod
   }
   if (key == GLFW_KEY_B && action == GLFW_PRESS) {
       Game::wireframeMode = !Game::wireframeMode; // Prze³¹cz stan
-  }
-  if (key >= 0 && key < 1024) {
-    if (action == GLFW_PRESS)
-      KeyboardManager::setKeyDown(key);
-    else if (action == GLFW_RELEASE)
-      KeyboardManager::setKeyUp(key);
   }
 }

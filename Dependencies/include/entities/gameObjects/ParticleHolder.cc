@@ -44,7 +44,7 @@ void ParticleHolder::update() {
   }
 }
 
-ParticleHolder& ParticleHolder::theOne() {
+ParticleHolder& ParticleHolder::singleton() {
   static ParticleHolder particleHolder;
   return particleHolder;
 }

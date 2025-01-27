@@ -13,5 +13,5 @@ public:
   void spawn(float distance);
   void update();
 
-  static BatteryHolder& theOne();
+  static BatteryHolder& singleton();
 };

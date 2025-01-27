@@ -36,21 +36,9 @@ Airplane::Airplane() :
   axisY(glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)),
   axisZ(glm::vec4(0.0f, 0.0f, 1.0f, 0.0f)),
   cockpit(Geometry::cockpit, glm::vec3(-1.5f,-5.0f,0.0f), white,glm::vec3(1.f)),
-  engine(Geometry::cube, glm::vec3(5.0f, 0.0f, 0.0f), white, glm::vec3(2.0f, 5.0f, 5.0f)),
-  tail(Geometry::cube, glm::vec3(-4.0f, 2.0f, 0.0f), red, glm::vec3(1.5f, 2.0f, 0.5f)),
-  sideWing(Geometry::cube, glm::vec3(0.0f, 1.5f, 0.0f), red, glm::vec3(3.0f, 0.5f, 12.0f)),
-  windShield(Geometry::cube, glm::vec3(0.5f, 2.7f, 0.0f), white, glm::vec3(0.3f, 1.5f, 2.0f), 0.3f),
   propeller(Geometry::propeller, glm::vec3(4.5f, 0.6f, 0.0f), brown, glm::vec3(2.0f, 1.0f, 1.0f)),
   blade1(Geometry::cube, glm::vec3(5.3f, 0.6f, 0.0f), brownDark, glm::vec3(0.1f, 8.0f, 1.0f)),
   blade2(Geometry::cube, glm::vec3(5.3f, 0.6f, 0.0f), brownDark, glm::vec3(0.1f, 8.0f, 1.0f)),
-  wheelProtectionR(Geometry::cube, glm::vec3(2.5f, -2.0f, 2.5f), red, glm::vec3(3.0f, 1.5f, 1.0f)),
-  wheelProtectionL(Geometry::cube, glm::vec3(2.5f, -2.0f, -2.5f), red, glm::vec3(3.0f, 1.5f, 1.0f)),
-  tireR(Geometry::cube, glm::vec3(2.5f, -2.8f, 2.5f), brownDark, glm::vec3(2.4f, 2.4f, 0.4f)),
-  tireL(Geometry::cube, glm::vec3(2.5f, -2.8f, -2.5f), brownDark, glm::vec3(2.4f, 2.4f, 0.4f)),
-  wheelAxis(Geometry::cube, glm::vec3(2.5, -2.8f, 0.0f), brown, glm::vec3(1.0f, 1.0f, 6.0f)),
-  suspension(Geometry::cube, glm::vec3(-3.2f, 0.5f, 0.0f), red, glm::vec3(0.4f, 2.0f, 0.4f)),
-  tireB(Geometry::cube, glm::vec3(-3.5f, -0.5f, 0.0f), brownDark, glm::vec3(1.2f, 1.2f, 0.2f)),
-  wheelAxisB(Geometry::cube, glm::vec3(-3.5f, -0.5f, 0.0f), brown, glm::vec3(0.5f, 0.5f, 0.3f)),
   body(Geometry::cube, glm::vec3(-0.8f, 1.5f, 0.0f), brown, glm::vec3(1.5f)),
   face(Geometry::cube, glm::vec3(-1.0f, 2.7f, 0.0f), pink, glm::vec3(1.0f)),
   hairSide(Geometry::cube, glm::vec3(-1.3f, 3.0f, 0.0f), brown, glm::vec3(1.2f, 0.4f, 1.2f)),
@@ -64,20 +52,8 @@ Airplane::Airplane() :
     cockpit.getBlendFactors().push_back(0.5f); // Blend factor for texture2
   components.push_back(&cockpit);
   components.push_back(&propeller);
-  //components.push_back(&engine);
-  //components.push_back(&tail);
-  //components.push_back(&sideWing);
-  //components.push_back(&windShield);
   components.push_back(&blade1);
   components.push_back(&blade2);
-  //components.push_back(&wheelProtectionR);
-  //components.push_back(&wheelProtectionL);
-  //components.push_back(&tireR);
-  //components.push_back(&tireL);
-  //components.push_back(&wheelAxis);
-  //components.push_back(&suspension);
-  //components.push_back(&tireB);
-  //components.push_back(&wheelAxisB);
   components.push_back(&body);
   components.push_back(&face);
   components.push_back(&hairSide);
@@ -85,7 +61,6 @@ Airplane::Airplane() :
 
   rigidBody.push_back(&cockpit);
   cockpit.setBody(new Sphere(5.0f));
-  //rigidBody.push_back(&engine);
   // create hair
   for (int i = 0; i < 12; ++i) {
     int col = i % 3;
@@ -209,7 +184,7 @@ Entity& Airplane::getBody() {
   return cockpit;
 }
 
-Airplane& Airplane::theOne() {
+Airplane& Airplane::singleton() {
   static Airplane airplane;
   return airplane;
 }

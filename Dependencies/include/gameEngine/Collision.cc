@@ -28,9 +28,9 @@ void Collision::checkCollisionAgainstPlane() {
     vector<DynamicEntity*>& entities = entry.second;
     for (int i = 0; i < entities.size(); ++i) {
       DynamicEntity* entity = entities[i];
-      if (entity->getType() && overlap(entity->getBody(), Airplane::theOne().getBody().getBody())) {
+      if (entity->getType() && overlap(entity->getBody(), Airplane::singleton().getBody().getBody())) {
         if (entity->getType() == OBSTACLE) {
-          Airplane::theOne().knockBack(entity->getPosition());
+          Airplane::singleton().knockBack(entity->getPosition());
           GAME::HEALTH = 0.0f > (GAME::HEALTH - 10.0f) ? (0.0f) : (GAME::HEALTH - 10.0f);
         } else {
           GAME::HEALTH = 100.0f < (GAME::HEALTH + 1.0f) ? (100.0f) : (GAME::HEALTH + 1.0f);

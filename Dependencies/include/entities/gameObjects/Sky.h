@@ -32,5 +32,5 @@ public:
   void sun();
   void update();
 
-  static Sky& theOne();
+  static Sky& singleton();
 };

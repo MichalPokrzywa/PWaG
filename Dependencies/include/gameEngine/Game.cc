@@ -1,7 +1,6 @@
 // Game.cc
 #include "Game.h"
 #include "Collision.h"
-#include "../include/io/KeyboardManager.h"
 #include <GLFW/glfw3.h>
 #include <common.h>
 #include <maths/Maths.h>
@@ -22,7 +21,6 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include "../../Writer.h"
 using std::cout;
 
 #ifdef min
@@ -60,10 +58,10 @@ void Game::init() {
   Parser::parse();
   DisplayManager::createDisplay();
   Geometry::initGeometry();
-  Light::theOne().setPosition(LIGHT::X, LIGHT::Y, LIGHT::Z);
+  Light::singleton().setPosition(LIGHT::X, LIGHT::Y, LIGHT::Z);
 }
 
-Game& Game::theOne() {
+Game& Game::singleton() {
   static Game game;
   return game;
 }
@@ -81,18 +79,18 @@ void Game::run() {
 
         MouseManager::update();
         Camera::primary().update();
-        Light::theOne().update(Airplane::theOne().getPosition());
+        Light::singleton().update(Airplane::singleton().getPosition());
         DisplayManager::prepareDisplay();
 
         // check collision
         Collision::checkCollisionAgainstPlane();
-        ParticleHolder::theOne().update();
+        ParticleHolder::singleton().update();
 
         renderer.render();
-        ObstacleHolder::theOne().update();
-        BatteryHolder::theOne().update();
-        Sky::theOne().update();
-        Airplane::theOne().update();
+        ObstacleHolder::singleton().update();
+        BatteryHolder::singleton().update();
+        Sky::singleton().update();
+        Airplane::singleton().update();
         DisplayManager::updateDisplay();
 
         // update health
@@ -134,13 +132,12 @@ void Game::resetGame() {
     GAME::MILES = 0.0f;
     TIMER = 0;
 
-    Airplane::theOne().resetFallState(); // Resetowanie stanu spadania samolotu
+    Airplane::singleton().resetFallState(); // Resetowanie stanu spadania samolotu
 
 	reset = false;
     cout << "Game has been reset.\n";
 }
 
-/* Helper function implementation */
 
 void updateFPSCount(double& previousSecond, int& updates) {
   if (DisplayManager::getTime() - previousSecond < 1.0) {

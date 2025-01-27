@@ -12,6 +12,6 @@ public:
   void spawnParticles(glm::vec3 position, int denstiy, glm::vec3 color, float scale);
   void update();
 
-  static ParticleHolder& theOne();
+  static ParticleHolder& singleton();
   static std::vector<DynamicEntity*>& getParticles();
 };
