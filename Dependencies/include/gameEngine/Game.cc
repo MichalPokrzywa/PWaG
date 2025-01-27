@@ -128,9 +128,9 @@ bool Game::shouldUpdate() {
 void Game::resetGame() {
     std::this_thread::sleep_for(std::chrono::seconds(5));
     GAME::HEALTH = 100.0f;
-    GAME::AIRPLANE_DISTANCE = 0.0f;
     GAME::MILES = 0.0f;
     TIMER = 0;
+
 
     Airplane::singleton().resetFallState(); // Resetowanie stanu spadania samolotu
 

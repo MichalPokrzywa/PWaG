@@ -5,8 +5,7 @@
 #include <shaders/EntityShader.h>
 #include <shaders/SeaShader.h>
 #include <shaders/ShadowShader.h>
-#include <shaders/MotionBlurShader.h>
-#include <../include/shaders/BloomShader.h>
+#include <shaders/BloomShader.h>
 
 #include <shaders/TextureShader.h>
 
@@ -19,7 +18,6 @@ private:
   SeaShader seaShader;
   ShadowShader seaShadowShader;
   ShadowShader entityShadowShader;
-  MotionBlurShader motionBlurShader;
   BloomShader bloomShader;
   
 

@@ -9,7 +9,6 @@ namespace Geometry {
   extern RawModel* tetrahedron;
   extern RawModel* cube;
   extern RawModel* sphere;
-  extern RawModel* sun;
   extern RawModel* sea;
   extern RawModel* cockpit;
   extern RawModel* propeller;

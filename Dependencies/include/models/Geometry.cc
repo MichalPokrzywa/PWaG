@@ -17,17 +17,14 @@ using std::vector;
 RawModel* Geometry::cube;
 RawModel* Geometry::sea;
 RawModel* Geometry::sphere;
-RawModel* Geometry::sun;
 RawModel* Geometry::cockpit;
 RawModel* Geometry::propeller;
 RawModel* Geometry::tetrahedron;
 RawModel* Geometry::quad;
 
 RawModel* createTetrahedron(int segments = 1);
-RawModel* createSun(int segments = 1);
 RawModel* createCube();
 RawModel* createSea(float radius, float height, int radialSegments, int heightSegments);
-RawModel* createCockpit();
 RawModel* createPropeller();
 RawModel* createQuad();
 
@@ -35,7 +32,6 @@ void Geometry::initGeometry() {
   tetrahedron = createTetrahedron();
   cube = createCube();
   sphere = createTetrahedron(4);
-  sun = createSun(4);
   sea = createSea(SEA::RADIUS, SEA::HEIGHT, SEA::RADIAL_SEGMENTS, SEA::HEIGHT_SEGMENTS);
   cockpit = Loader::loadFromOBJ("./Dependencies/include/models/Plane/AirPlane2.obj");
   propeller = createPropeller();
@@ -46,7 +42,6 @@ void Geometry::cleanGeometry() {
   delete tetrahedron;
   delete cube;
   delete sphere;
-  delete sun;
   delete sea;
   delete cockpit;
   delete propeller;
@@ -141,108 +136,6 @@ RawModel* createTetrahedron(int segments) {
   }
 
   return Loader::loadToVAO(vertexArray, 3, normals, 3);
-}
-
-glm::vec2 calculateUV(const glm::vec3& position) {
-    glm::vec3 normalizedPos = glm::normalize(position); // Normalize the position
-    float u = 0.5f + atan2(normalizedPos.z, normalizedPos.x) / (2.0f * M_PI);
-    float v = 0.5f - asin(normalizedPos.y) / M_PI;
-    return glm::vec2(u, v);
-}
-
-void sunHelper(int segments, glm::vec3 vert1, glm::vec3 vert2, glm::vec3 vert3, vector<glm::vec3>* vertices, vector<glm::vec2>* uvs ) {
-    glm::vec3 vStepSize = (vert3 - vert1) / (float)segments;
-    glm::vec3 hStepSize = (vert2 - vert3) / (float)segments;
-    for (int i = 0; i < segments; ++i) {
-        // level i havs 2 * i + 1 triangles
-        for (int j = 0; j < 2 * i + 1; ++j) {
-            if (j % 2) { // j is odd, triangle is upside down
-                glm::vec3 leftVert = vert1 + (float)i * vStepSize + (float)(j / 2) * hStepSize;
-                glm::vec3 rightVert = leftVert + hStepSize;
-                glm::vec3 bottomVert = rightVert + vStepSize;
-
-                vertices->push_back(normalizePoint(leftVert));
-                vertices->push_back(normalizePoint(rightVert));
-                vertices->push_back(normalizePoint(bottomVert));
-                uvs->push_back(calculateUV(leftVert));
-                uvs->push_back(calculateUV(rightVert));
-                uvs->push_back(calculateUV(bottomVert));
-            }
-            else { // j is even
-                glm::vec3 topVert = vert1 + (float)i * vStepSize + (float)(j / 2) * hStepSize;
-                glm::vec3 leftVert = topVert + vStepSize;
-                glm::vec3 rightVert = leftVert + hStepSize;
-
-                vertices->push_back(normalizePoint(topVert));
-                vertices->push_back(normalizePoint(rightVert));
-                vertices->push_back(normalizePoint(leftVert));
-                uvs->push_back(calculateUV(topVert));
-                uvs->push_back(calculateUV(rightVert));
-                uvs->push_back(calculateUV(leftVert));
-            }
-        }
-    }
-}
-
-RawModel* createSun(int segments) {
-    assert(segments > 0);
-    vector<glm::vec2> uvs;
-    vector<glm::vec3> vertices;
-
-    if (segments == 1) {
-        glm::vec3 vert1(0.5f, 0.5f, 0.5f);
-        glm::vec3 vert2(-0.5f, 0.5f, -0.5f);
-        glm::vec3 vert3(-0.5f, -0.5f, 0.5f);
-        glm::vec3 vert4(0.5f, -0.5f, -0.5f);
-        sunHelper(segments, vert1, vert3, vert2, &vertices, &uvs);
-        sunHelper(segments, vert1, vert4, vert3, &vertices, &uvs);
-        sunHelper(segments, vert1, vert2, vert4, &vertices, &uvs);
-        sunHelper(segments, vert2, vert3, vert4, &vertices, &uvs);
-    }
-    else {
-        glm::vec3 vertTop(0.0f, 1.0f, 0.0f);
-        glm::vec3 vertBot(0.0f, -1.0f, 0.0f);
-        glm::vec3 vertA(1.0f, 0.0f, 1.0f);
-        glm::vec3 vertB(-1.0f, 0.0f, 1.0f);
-        glm::vec3 vertC(-1.0f, 0.0f, -1.0f);
-        glm::vec3 vertD(1.0f, 0.0f, -1.0f);
-        sunHelper(segments, vertTop, vertA, vertB, &vertices, &uvs);
-        sunHelper(segments, vertTop, vertB, vertC, &vertices, &uvs);
-        sunHelper(segments, vertTop, vertC, vertD, &vertices, &uvs);
-        sunHelper(segments, vertTop, vertD, vertA, &vertices, &uvs);
-        sunHelper(segments, vertBot, vertB, vertA, &vertices, &uvs);
-        sunHelper(segments, vertBot, vertC, vertB, &vertices, &uvs);
-        sunHelper(segments, vertBot, vertD, vertC, &vertices, &uvs);
-        sunHelper(segments, vertBot, vertA, vertD, &vertices, &uvs);
-    }
-
-    vector<float> vertexArray, normals, uvArray;
-
-    // Populate vertex array
-    for (int i = 0; i < vertices.size(); ++i) {
-        vertexArray.push_back(vertices[i].x);
-        vertexArray.push_back(vertices[i].y);
-        vertexArray.push_back(vertices[i].z);
-    }
-
-    // Populate UV array
-    for (int i = 0; i < uvs.size(); ++i) {
-        uvArray.push_back(uvs[i].x);
-        uvArray.push_back(uvs[i].y);
-    }
-
-    // Calculate normals
-    for (int i = 0; i < vertices.size(); i += 3) {
-        glm::vec3 normal = glm::cross(vertices[i + 1] - vertices[i], vertices[i + 2] - vertices[i]);
-        normal = glm::normalize(normal); // Normalize the normal
-        for (int j = 0; j < 3; ++j) {
-            normals.push_back(normal.x);
-            normals.push_back(normal.y);
-            normals.push_back(normal.z);
-        }
-    }
-
-    return Loader::loadToVAO(vertexArray, 3, uvArray, 2, normals, 3);
 }
 
 RawModel* createQuad() {
@@ -393,82 +286,6 @@ RawModel* createSea(float radius, float height, int radialSegments, int heightSe
   }
 
   return Loader::loadToVAO(vertices, 3, waves, 3, indices);
-}
-
-RawModel* createCockpit() {
-  glm::vec3 vert0(4, 2.5, 2.5);
-  glm::vec3 vert1(4, 2.5, -2.5);
-  glm::vec3 vert2(4, -2.5, 2.5);
-  glm::vec3 vert3(4, -2.5, -2.5);
-  glm::vec3 vert4(-4, 1.5, -0.5);
-  glm::vec3 vert5(-4, 1.5, 0.5);
-  glm::vec3 vert6(-4, 0.5, -0.5);
-  glm::vec3 vert7(-4, 0.5, 0.5);
-
-  glm::vec3 vertices[36];
-  // face left
-  vertices[0] = vert0;
-  vertices[1] = vert1;
-  vertices[2] = vert3;
-  vertices[3] = vert0;
-  vertices[4] = vert3;
-  vertices[5] = vert2;
-  // face right
-  vertices[6] = vert4;
-  vertices[7] = vert5;
-  vertices[8] = vert6;
-  vertices[9] = vert5;
-  vertices[10] = vert7;
-  vertices[11] = vert6;
-  // face front
-  vertices[12] = vert0;
-  vertices[13] = vert2;
-  vertices[14] = vert7;
-  vertices[15] = vert0;
-  vertices[16] = vert7;
-  vertices[17] = vert5;
-  // face back
-  vertices[18] = vert1;
-  vertices[19] = vert6;
-  vertices[20] = vert3;
-  vertices[21] = vert1;
-  vertices[22] = vert4;
-  vertices[23] = vert6;
-  // face up
-  vertices[24] = vert4;
-  vertices[25] = vert1;
-  vertices[26] = vert0;
-  vertices[27] = vert4;
-  vertices[28] = vert0;
-  vertices[29] = vert5;
-  // face down
-  vertices[30] = vert6;
-  vertices[31] = vert2;
-  vertices[32] = vert3;
-  vertices[33] = vert6;
-  vertices[34] = vert7;
-  vertices[35] = vert2;
-
-  vector<float> vertexArray, normals;
-  for (int i = 0; i < 36; ++i) {
-    vertexArray.push_back(vertices[i].x);
-    vertexArray.push_back(vertices[i].y);
-    vertexArray.push_back(vertices[i].z);
-  }
-
-  for (int i = 0; i < 6; ++i) {
-    glm::vec3 point0 = vertices[i * 6];
-    glm::vec3 point1 = vertices[i * 6 + 1];
-    glm::vec3 point2 = vertices[i * 6 + 2];
-    glm::vec3 normal = glm::cross(point0 - point1, point2 - point1);
-    for (int j = 0; j < 6; ++j) {
-      normals.push_back(normal.x);
-      normals.push_back(normal.y);
-      normals.push_back(normal.z);
-    }
-  }
-
-  return Loader::loadToVAO(vertexArray, 3, normals, 3);
 }
 
 RawModel* createPropeller() {

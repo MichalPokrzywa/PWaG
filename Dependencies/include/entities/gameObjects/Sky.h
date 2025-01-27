@@ -29,7 +29,6 @@ public:
   ~Sky();
 
   void createCloud(float angle);
-  void sun();
   void update();
 
   static Sky& singleton();

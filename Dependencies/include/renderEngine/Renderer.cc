@@ -86,12 +86,10 @@ void Renderer::render() {
     glBindTexture(GL_TEXTURE_2D, velocityTexture);
     if (Game::wireframeMode) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        // motionBlurShader.render();
         bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     }
     else {
-        //motionBlurShader.render();
         bloomShader.renderBloomEffect(colorTexture, ACTUAL_WIDTH, ACTUAL_HEIGHT);
     }
 

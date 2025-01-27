@@ -87,20 +87,6 @@ void Sky::createCloud(float angle) {
   cloud->rotate(0.0f, 0.0f, angle + PI / 2.0f, cloudPos);
 }
 
-void Sky::sun() {
-    float height = Maths::rand(60.0f, 140.0f) + SEA::RADIUS; //??????
-
-    glm::vec3 position( 10.f, 70.f, -50.f);
-    Entity* entity = new Entity(Geometry::sun, position, yellow, glm::vec3(2.0f), 1.0f, false, false);
-    entity->changeRotation(0.0f, Maths::rand(0.0f, 2 * PI), Maths::rand(0.0f, 2.0f * PI));
-    Texture texture = TextureLoader::loadTexture("./Dependencies/include/textures/sun_texture.png");
-    entity->addTexture(texture);
-    entity->getBlendFactors().push_back(1.0f); // Blend factor for texture1
-    Entity::addTextureEntity(entity);
-
-    //glm::vec3 cloudPos(glm::cos(angle) * height, glm::sin(angle) * height - SEA::RADIUS, Maths::rand(-320.0f, -120.0f));
-}
-
 void Sky::update() {
   for (auto& cloud: clouds) {
     cloud->rotate(0.0f, 0.0f, GAME::SPEED, glm::vec3(0.0f, -SEA::RADIUS, 0.0f));
